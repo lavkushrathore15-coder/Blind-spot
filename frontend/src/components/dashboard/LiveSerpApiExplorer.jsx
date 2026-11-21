@@ -106,21 +106,21 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
   const isConfigured = Boolean(status?.configured);
 
   return (
-    <div className={`glass-card rounded-2xl p-6 border border-slate-200/90 shadow-glass-light space-y-6 ${className || ''}`}>
+    <div className={`glass-card rounded-2xl p-6 border border-slate-800 shadow-xl space-y-6 ${className || ''}`}>
       {/* Top Header & Status Indicator */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-slate-200/80 gap-3">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-slate-800 gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-200 text-cyan-400">
+          <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-400/30 text-cyan-400">
             <Radio className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-semibold text-slate-900">Live SerpApi Discovery Engine</h3>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-50 border border-cyan-200 text-cyan-400">
+              <h3 className="text-sm font-bold text-white">Live SerpApi Discovery Engine</h3>
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-semibold">
                 Phase 3 Live Feeds
               </span>
             </div>
-            <p className="text-xs text-slate-500">Real-time Google search, news, consular advisories, transit & scam ingestion</p>
+            <p className="text-xs text-slate-300">Real-time Google search, news, consular advisories, transit & scam ingestion</p>
           </div>
         </div>
 
@@ -142,22 +142,22 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
 
       {/* Unverified Credential Notice (if API key is not yet set) */}
       {!isConfigured && (
-        <div className="p-4 rounded-xl bg-amber-50/30 border border-amber-200 text-xs text-amber-200 space-y-2">
-          <div className="flex items-center gap-2 font-semibold text-amber-300">
+        <div className="p-4 rounded-xl bg-amber-950/40 border border-amber-500/40 text-xs text-amber-200 space-y-2">
+          <div className="flex items-center gap-2 font-bold text-amber-300">
             <Key className="w-4 h-4 text-amber-400" />
             <span>Live Integration Status: Unverified</span>
           </div>
-          <p className="leading-relaxed opacity-90">
+          <p className="leading-relaxed opacity-95">
             Live integration has not yet been verified because a SerpApi key has not been supplied in <code className="text-amber-300 font-mono">backend/.env</code>. To activate real-time Google Search, Google News, and diplomatic alert ingestion, configure <code className="text-amber-300 font-mono">SERPAPI_API_KEY</code> on the backend.
           </p>
-          <div className="text-[11px] text-amber-400/90 font-mono">
+          <div className="text-[11px] text-amber-400 font-mono">
             Integrity Guard: Simulated or fabricated search results are never generated when credentials are absent.
           </div>
         </div>
       )}
 
       {/* Stream Selection Tabs */}
-      <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white/80 border border-slate-200/90 shadow-glass-light overflow-x-auto text-xs">
+      <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-900/90 border border-slate-700/80 shadow-inner overflow-x-auto text-xs">
         {streams.map((s) => {
           const Icon = s.icon;
           const isActive = activeStream === s.id;
@@ -171,8 +171,8 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
               }}
               className={`px-3 py-1.5 rounded-lg font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                 isActive
-                  ? 'bg-cyan-500 text-navy-950 font-semibold shadow-xs'
-                  : 'text-slate-500 hover:text-white hover:bg-slate-100'
+                  ? 'bg-cyan-500 text-slate-950 font-bold shadow-xs'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800'
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
@@ -183,10 +183,10 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
       </div>
 
       {/* Action Trigger Bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-white/70 border border-slate-200">
-        <div className="text-xs text-slate-600">
-          <span>Target Target: </span>
-          <strong className="text-slate-900 font-mono">{destinationName || 'None selected'}</strong>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+        <div className="text-xs text-slate-300">
+          <span>Target Destination: </span>
+          <strong className="text-white font-mono font-bold">{destinationName || 'None selected'}</strong>
         </div>
 
         <Button
@@ -212,11 +212,11 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
       {/* Results View */}
       {results && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between text-xs text-slate-500">
+          <div className="flex items-center justify-between text-xs text-slate-300">
             <span className="font-mono">
               Found {results.totalResults || results.count || 0} deduplicated intelligence records
             </span>
-            <span className="text-[11px] font-mono text-cyan-400">
+            <span className="text-[11px] font-mono text-cyan-300 font-bold">
               Retrieved: {new Date(results.retrievedAt || Date.now()).toLocaleTimeString()}
             </span>
           </div>
@@ -226,14 +226,14 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
             {(results.feed || results.results || []).map((item) => (
               <div
                 key={item.id}
-                className="p-4 rounded-xl bg-white/80 border border-slate-200 hover:border-cyan-200 transition-all space-y-2 text-xs"
+                className="p-4 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 transition-all space-y-2 text-xs"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-bold">
                       {item.category} • {item.sourceName}
                     </span>
-                    <h4 className="text-sm font-bold text-slate-900 hover:text-cyan-800 transition-colors">
+                    <h4 className="text-sm font-bold text-white hover:text-cyan-300 transition-colors">
                       <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">
                         {item.title}
                       </a>
@@ -244,7 +244,7 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
                     href={item.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-white flex-shrink-0"
+                    className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex-shrink-0"
                     title="Open verified source URL"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -252,14 +252,14 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
                 </div>
 
                 {item.snippet && (
-                  <p className="text-slate-600 leading-relaxed">{item.snippet}</p>
+                  <p className="text-slate-300 leading-relaxed">{item.snippet}</p>
                 )}
 
-                <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-1 border-t border-slate-200/60">
+                <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-slate-800">
                   <span>
                     {item.publishedDate ? `Published: ${item.publishedDate}` : 'Publication date unlisted'}
                   </span>
-                  <span className="truncate max-w-[220px] text-slate-500">
+                  <span className="truncate max-w-[220px] text-slate-400">
                     {item.sourceUrl}
                   </span>
                 </div>
@@ -267,7 +267,7 @@ export const LiveSerpApiExplorer = ({ destinationName, className }) => {
             ))}
 
             {(results.feed || results.results || []).length === 0 && (
-              <div className="p-8 text-center text-xs text-slate-500 rounded-xl bg-white/85/40 border border-slate-200">
+              <div className="p-8 text-center text-xs text-slate-400 rounded-xl bg-slate-900/40 border border-slate-800">
                 No matching intelligence telemetry returned for this query parameter.
               </div>
             )}

@@ -42,6 +42,7 @@ export const InvestigationPage = () => {
       setDestinationInput(initialQuery);
     }
   }, [initialQuery]);
+
   const [startDate, setStartDate] = useState('2026-12-05');
   const [endDate, setEndDate] = useState('2026-12-14');
   const [travellerType, setTravellerType] = useState('Solo Female Traveller');
@@ -160,18 +161,18 @@ export const InvestigationPage = () => {
             Tactical Investigation Engine
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-white mt-2">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 tracking-tight">
           Configure Destination Investigation
         </h1>
-        <p className="text-xs sm:text-sm text-slate-400 mt-1">
+        <p className="text-xs sm:text-sm text-slate-300 mt-1">
           Specify your destination and traveller profile to calibrate localized threat scoring and emergency facilities.
         </p>
       </div>
 
       {/* Investigation Scanning Progress Modal / Overlay */}
       {isInvestigating && (
-        <div className="fixed inset-0 z-50 bg-navy-950/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-card max-w-md w-full rounded-2xl p-6 border border-cyan-500/40 shadow-glow-cyan space-y-6 text-center animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="glass-card max-w-md w-full rounded-2xl p-6 border border-cyan-500/40 shadow-glow-cyan space-y-6 text-center animate-in fade-in duration-300 bg-slate-900/95">
             <div className="relative mx-auto w-20 h-20 flex items-center justify-center">
               <div className="absolute inset-0 rounded-full border-4 border-cyan-500/20 animate-ping" />
               <div className="w-16 h-16 rounded-full bg-cyan-500/10 border-2 border-cyan-400 flex items-center justify-center shadow-glow-cyan-sm">
@@ -181,20 +182,20 @@ export const InvestigationPage = () => {
 
             <div className="space-y-2">
               <h3 className="text-lg font-bold text-white">Synthesizing Travel Intelligence</h3>
-              <p className="text-xs text-cyan-300 font-mono h-8 flex items-center justify-center">
+              <p className="text-xs text-cyan-300 font-mono h-8 flex items-center justify-center font-semibold">
                 {investigationStage}
               </p>
             </div>
 
             {/* Progress Bar */}
             <div className="space-y-1.5">
-              <div className="w-full bg-navy-800 rounded-full h-2 overflow-hidden border border-navy-700">
+              <div className="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-700">
                 <div
                   className="bg-gradient-to-r from-cyan-500 to-indigo-500 h-full rounded-full transition-all duration-500"
                   style={{ width: `${investigationProgress}%` }}
                 />
               </div>
-              <div className="flex justify-between text-[11px] font-mono text-slate-400">
+              <div className="flex justify-between text-[11px] font-mono text-slate-300 font-medium">
                 <span>Multi-Source Ingestion</span>
                 <span>{investigationProgress}%</span>
               </div>
@@ -208,13 +209,13 @@ export const InvestigationPage = () => {
         {/* Form Container (2 cols) */}
         <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-6">
           {/* Section 1: Destination Selection */}
-          <div className="glass-card rounded-2xl p-6 border border-navy-700/60 space-y-4">
+          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4 shadow-xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-cyan-400" />
                 1. Target Destination
               </h3>
-              <span className="text-[11px] font-mono text-slate-400">City & Country</span>
+              <span className="text-[11px] font-mono text-slate-300 font-medium">City & Country</span>
             </div>
 
             <Input
@@ -230,8 +231,8 @@ export const InvestigationPage = () => {
             />
 
             {/* Quick Catalog Presets */}
-            <div className="space-y-1.5">
-              <span className="text-xs text-slate-400">Verified Catalog Presets:</span>
+            <div className="space-y-2">
+              <span className="text-xs text-slate-300 font-medium">Verified Catalog Presets:</span>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {sampleDestinations.map((dest) => (
                   <button
@@ -240,15 +241,15 @@ export const InvestigationPage = () => {
                     onClick={() => handlePresetSelect(dest)}
                     className={`p-2.5 rounded-xl border text-left transition-all ${
                       selectedPresetId === dest.id
-                        ? 'bg-cyan-500/15 border-cyan-500/60 text-white shadow-glow-cyan-sm'
-                        : 'bg-navy-900/80 border-navy-750 text-slate-300 hover:border-slate-600'
+                        ? 'bg-cyan-500/20 border-2 border-cyan-400 text-white shadow-glow-cyan-sm'
+                        : 'bg-slate-900/80 border border-slate-700/80 text-slate-100 hover:border-slate-500 hover:bg-slate-800/90'
                     }`}
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-base">{dest.flag}</span>
-                      <span className="text-xs font-semibold">{dest.city}</span>
+                      <span className="text-xs font-bold text-slate-100">{dest.city}</span>
                     </div>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">{dest.country}</span>
+                    <span className="text-[10px] text-slate-300 block mt-0.5 font-medium">{dest.country}</span>
                   </button>
                 ))}
               </div>
@@ -256,13 +257,15 @@ export const InvestigationPage = () => {
           </div>
 
           {/* Section 2: Travel Dates */}
-          <div className="glass-card rounded-2xl p-6 border border-navy-700/60 space-y-4">
+          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4 shadow-xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-cyan-400" />
                 2. Travel Window & Duration
               </h3>
-              <Badge variant="info">{durationDays} Days Total</Badge>
+              <Badge variant="info" className="font-bold font-mono px-3 py-1">
+                {durationDays} Days Total
+              </Badge>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -282,38 +285,53 @@ export const InvestigationPage = () => {
           </div>
 
           {/* Section 3: Traveller Profile */}
-          <div className="glass-card rounded-2xl p-6 border border-navy-700/60 space-y-4">
-            <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4 shadow-xl">
+            <h3 className="text-sm font-bold text-white flex items-center gap-2">
               <Users className="w-4 h-4 text-cyan-400" />
               3. Traveller Demographic & Profile
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {travellerTypes.map((type) => (
-                <div
-                  key={type.id}
-                  onClick={() => setTravellerType(type.id)}
-                  className={`p-3.5 rounded-xl border cursor-pointer transition-all ${
-                    travellerType === type.id
-                      ? 'bg-cyan-500/15 border-cyan-500/60 shadow-glow-cyan-sm'
-                      : 'bg-navy-900/80 border-navy-750 hover:border-slate-600'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white">{type.label}</span>
-                    {travellerType === type.id && (
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                    )}
+              {travellerTypes.map((type) => {
+                const isSelected = travellerType === type.id;
+                return (
+                  <div
+                    key={type.id}
+                    onClick={() => setTravellerType(type.id)}
+                    className={`p-3.5 rounded-xl border cursor-pointer transition-all ${
+                      isSelected
+                        ? 'bg-cyan-950/70 border-2 border-cyan-400 shadow-glow-cyan-sm'
+                        : 'bg-slate-900/80 border border-slate-700/80 hover:border-slate-500 hover:bg-slate-800/90'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={`text-xs font-bold ${
+                          isSelected ? 'text-cyan-300 font-extrabold' : 'text-slate-100'
+                        }`}
+                      >
+                        {type.label}
+                      </span>
+                      {isSelected && (
+                        <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+                      )}
+                    </div>
+                    <p
+                      className={`text-[11px] mt-1 leading-snug ${
+                        isSelected ? 'text-cyan-100/90 font-medium' : 'text-slate-300'
+                      }`}
+                    >
+                      {type.desc}
+                    </p>
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1 leading-snug">{type.desc}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           {/* Section 4: Priority Risk Concerns */}
-          <div className="glass-card rounded-2xl p-6 border border-navy-700/60 space-y-4">
-            <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-4 shadow-xl">
+            <h3 className="text-sm font-bold text-white flex items-center gap-2">
               <Shield className="w-4 h-4 text-cyan-400" />
               4. Key Areas of Concern
             </h3>
@@ -326,17 +344,17 @@ export const InvestigationPage = () => {
                     key={opt}
                     type="button"
                     onClick={() => handleTogglePriority(opt)}
-                    className={`p-2.5 rounded-xl border text-xs font-medium text-left flex items-center justify-between transition-all ${
+                    className={`p-2.5 rounded-xl border text-xs font-semibold text-left flex items-center justify-between transition-all ${
                       selected
-                        ? 'bg-indigo-500/15 border-indigo-500/50 text-indigo-200'
-                        : 'bg-navy-900/80 border-navy-750 text-slate-400 hover:text-white'
+                        ? 'bg-indigo-950/80 border-2 border-indigo-400 text-indigo-100 shadow-glow-violet'
+                        : 'bg-slate-900/80 border border-slate-700/80 text-slate-200 hover:text-white hover:bg-slate-800/90'
                     }`}
                   >
                     <span>{opt}</span>
                     {selected ? (
                       <Check className="w-3.5 h-3.5 text-cyan-400" />
                     ) : (
-                      <span className="w-3.5 h-3.5 rounded-full border border-navy-700" />
+                      <span className="w-3.5 h-3.5 rounded-full border border-slate-500" />
                     )}
                   </button>
                 );
@@ -359,44 +377,44 @@ export const InvestigationPage = () => {
 
         {/* Sidebar Summary & Investigation Parameters */}
         <div className="space-y-6">
-          <div className="glass-card rounded-2xl p-6 border border-navy-700/60 space-y-5 sticky top-24">
-            <div className="flex items-center gap-2 pb-3 border-b border-navy-700/60">
+          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-5 sticky top-24 shadow-xl">
+            <div className="flex items-center gap-2 pb-3 border-b border-slate-700/80">
               <Radio className="w-4 h-4 text-cyan-400" />
-              <h3 className="text-sm font-semibold text-white">Investigation Scope</h3>
+              <h3 className="text-sm font-bold text-white">Investigation Scope</h3>
             </div>
 
             <div className="space-y-3 text-xs">
               <div className="flex justify-between">
-                <span className="text-slate-400">Target Location:</span>
-                <span className="font-semibold text-white text-right">
+                <span className="text-slate-300 font-medium">Target Location:</span>
+                <span className="font-bold text-white text-right">
                   {destinationInput || 'Not specified'}
                 </span>
               </div>
 
               <div className="flex justify-between">
-                <span className="text-slate-400">Window:</span>
-                <span className="font-mono text-cyan-300">
+                <span className="text-slate-300 font-medium">Window:</span>
+                <span className="font-mono text-cyan-300 font-bold">
                   {startDate} to {endDate}
                 </span>
               </div>
 
               <div className="flex justify-between">
-                <span className="text-slate-400">Duration:</span>
-                <span className="font-mono text-white">{durationDays} Days</span>
+                <span className="text-slate-300 font-medium">Duration:</span>
+                <span className="font-mono text-white font-bold">{durationDays} Days</span>
               </div>
 
               <div className="flex justify-between">
-                <span className="text-slate-400">Demographic:</span>
-                <span className="font-medium text-indigo-300">{travellerType}</span>
+                <span className="text-slate-300 font-medium">Demographic:</span>
+                <span className="font-bold text-indigo-300">{travellerType}</span>
               </div>
 
-              <div className="pt-2 border-t border-navy-800 space-y-1.5">
-                <span className="text-slate-400 block font-medium">Prioritized Feeds ({priorities.length}):</span>
+              <div className="pt-2 border-t border-slate-700/80 space-y-1.5">
+                <span className="text-slate-300 block font-medium">Prioritized Feeds ({priorities.length}):</span>
                 <div className="flex flex-wrap gap-1">
                   {priorities.map((p) => (
                     <span
                       key={p}
-                      className="text-[10px] px-2 py-0.5 rounded bg-navy-800 border border-navy-700 text-slate-300"
+                      className="text-[10px] px-2 py-0.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 font-medium"
                     >
                       {p}
                     </span>
@@ -405,9 +423,9 @@ export const InvestigationPage = () => {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-navy-950/80 border border-navy-800 text-[11px] text-slate-400 space-y-1">
-              <span className="font-semibold text-cyan-400 block">Demonstration Architecture:</span>
-              <p>
+            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] text-slate-300 space-y-1">
+              <span className="font-bold text-cyan-400 block">Demonstration Architecture:</span>
+              <p className="leading-relaxed">
                 Submitting executes the synthetic intelligence pipeline and persists the resulting dossier directly in your browser's encrypted history.
               </p>
             </div>

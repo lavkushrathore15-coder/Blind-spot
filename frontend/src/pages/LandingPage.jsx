@@ -134,7 +134,7 @@ export const LandingPage = () => {
               </span>
             </div>
             <h2 className="text-2xl font-bold text-white mt-1">Pre-Investigated Destinations</h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-300 mt-0.5">
               Comprehensive telemetry dossiers ready for immediate tactical review
             </p>
           </div>
@@ -170,7 +170,7 @@ export const LandingPage = () => {
                   <h3 className="text-lg font-bold text-white mt-3 group-hover:text-cyan-300 transition-colors">
                     {dest.city}
                   </h3>
-                  <p className="text-xs text-slate-400">{dest.country} • {dest.region}</p>
+                  <p className="text-xs text-slate-300 font-medium">{dest.country} • {dest.region}</p>
 
                   <div className="mt-3 p-2.5 rounded-xl bg-navy-900/60 border border-navy-800 text-xs space-y-1">
                     <span className="text-slate-400 font-mono text-[10px] uppercase">Primary Alert</span>
@@ -181,10 +181,10 @@ export const LandingPage = () => {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-navy-800/80 flex items-center justify-between text-xs">
-                  <span className="text-slate-400 font-mono text-[11px]">
+                  <span className="text-slate-300 font-mono text-[11px]">
                     {dest.emergencyFacilities.length} Emergency Hubs
                   </span>
-                  <span className="text-cyan-400 group-hover:translate-x-1 transition-transform flex items-center gap-1 font-semibold">
+                  <span className="text-cyan-300 group-hover:translate-x-1 transition-transform flex items-center gap-1 font-bold">
                     View Brief <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -200,7 +200,7 @@ export const LandingPage = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-white">
             Beyond Generic Travel Advisories
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-2">
+          <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
             Standard government advisories declare entire countries "Level 2" or "Level 3" without telling you which specific streets, hospital corridors, or airport taxi booths are safe.
           </p>
         </div>

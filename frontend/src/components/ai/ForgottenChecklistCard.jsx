@@ -35,24 +35,24 @@ export const ForgottenChecklistCard = ({
 
   return (
     <div
-      className={`glass-card rounded-2xl p-6 border border-slate-200/90 shadow-glass-light flex flex-col ${className}`}
+      className={`glass-card rounded-2xl p-6 border border-slate-800 shadow-xl flex flex-col ${className}`}
     >
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200/80 gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-3">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-200 text-cyan-400">
+          <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-400/30 text-cyan-400">
             <ListChecks className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-base font-bold text-slate-900 tracking-tight">
+              <h3 className="text-base font-extrabold text-white tracking-tight">
                 Forgotten Checklist
               </h3>
-              <Badge variant="cyan" className="font-mono text-[10px]">
+              <Badge variant="info" className="font-mono text-[10px]">
                 6 Core Dimensions
               </Badge>
             </div>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-300">
               Identifies under-investigated travel domains & intelligence blind spots
             </p>
           </div>
@@ -74,32 +74,32 @@ export const ForgottenChecklistCard = ({
 
       {/* Tally Metrics Bar */}
       <div className="grid grid-cols-3 gap-3 my-4">
-        <div className="p-3 rounded-xl bg-slate-50/80 border border-emerald-200 text-center">
+        <div className="p-3 rounded-xl bg-slate-900/80 border border-emerald-500/30 text-center">
           <div className="flex items-center justify-center gap-1.5 text-emerald-400 mb-1">
             <CheckCircle2 className="w-4 h-4" />
-            <span className="text-lg font-bold font-mono">{adequatelyCheckedCount}</span>
+            <span className="text-lg font-bold font-mono text-white">{adequatelyCheckedCount}</span>
           </div>
-          <span className="text-[11px] text-slate-500 font-medium block">
+          <span className="text-[11px] text-slate-300 font-medium block">
             Adequately Checked
           </span>
         </div>
 
-        <div className="p-3 rounded-xl bg-slate-50/80 border border-amber-200 text-center">
+        <div className="p-3 rounded-xl bg-slate-900/80 border border-amber-500/30 text-center">
           <div className="flex items-center justify-center gap-1.5 text-amber-400 mb-1">
             <AlertTriangle className="w-4 h-4" />
-            <span className="text-lg font-bold font-mono">{insufficientCount}</span>
+            <span className="text-lg font-bold font-mono text-white">{insufficientCount}</span>
           </div>
-          <span className="text-[11px] text-slate-500 font-medium block">
+          <span className="text-[11px] text-slate-300 font-medium block">
             Limited Telemetry
           </span>
         </div>
 
-        <div className="p-3 rounded-xl bg-slate-50/80 border border-rose-200 text-center">
+        <div className="p-3 rounded-xl bg-slate-900/80 border border-rose-500/30 text-center">
           <div className="flex items-center justify-center gap-1.5 text-rose-400 mb-1">
             <XCircle className="w-4 h-4" />
-            <span className="text-lg font-bold font-mono">{uninvestigatedCount}</span>
+            <span className="text-lg font-bold font-mono text-white">{uninvestigatedCount}</span>
           </div>
-          <span className="text-[11px] text-slate-500 font-medium block">
+          <span className="text-[11px] text-slate-300 font-medium block">
             Critical BlindSpots
           </span>
         </div>
@@ -108,8 +108,8 @@ export const ForgottenChecklistCard = ({
       {/* Checklist items list */}
       <div className="space-y-3 flex-1 overflow-y-auto">
         {checklist.length === 0 ? (
-          <div className="py-8 text-center text-xs text-slate-500 space-y-2">
-            <FileQuestion className="w-8 h-8 mx-auto text-slate-600" />
+          <div className="py-8 text-center text-xs text-slate-400 space-y-2">
+            <FileQuestion className="w-8 h-8 mx-auto text-slate-500" />
             <p>Run AI intelligence analysis to generate the Forgotten Checklist audit.</p>
           </div>
         ) : (
@@ -123,10 +123,10 @@ export const ForgottenChecklistCard = ({
                 key={item.category}
                 className={`p-3.5 rounded-xl border transition-all space-y-2 ${
                   isChecked
-                    ? 'bg-slate-50/80 border-slate-200/90 hover:border-emerald-200'
+                    ? 'bg-slate-900/70 border-slate-800 hover:border-emerald-500/40'
                     : isInsufficient
-                    ? 'bg-amber-50/20 border-amber-200 hover:border-amber-500/50'
-                    : 'bg-rose-50/20 border-rose-200 hover:border-rose-500/50'
+                    ? 'bg-amber-950/30 border-amber-500/30 hover:border-amber-500/50'
+                    : 'bg-rose-950/30 border-rose-500/30 hover:border-rose-500/50'
                 }`}
               >
                 {/* Title and Status Badge */}
@@ -139,13 +139,13 @@ export const ForgottenChecklistCard = ({
                     ) : (
                       <XCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
                     )}
-                    <h4 className="text-xs sm:text-sm font-semibold text-slate-900">
+                    <h4 className="text-xs sm:text-sm font-bold text-white">
                       {item.displayName || item.category}
                     </h4>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-mono text-slate-500">
+                    <span className="text-[11px] font-mono text-slate-400">
                       {item.evidenceCount} verified {item.evidenceCount === 1 ? 'record' : 'records'}
                     </span>
                     <Badge
@@ -164,13 +164,13 @@ export const ForgottenChecklistCard = ({
                 </div>
 
                 {/* Gap Analysis */}
-                <p className="text-xs text-slate-600 leading-relaxed pl-6">
+                <p className="text-xs text-slate-300 leading-relaxed pl-6">
                   {item.gapAnalysis}
                 </p>
 
                 {/* Recommended Mitigation / Targeted Action */}
-                <div className="ml-6 p-2.5 rounded-lg bg-slate-50/80 border border-slate-200 flex items-start justify-between gap-2 text-xs">
-                  <div className="flex items-start gap-1.5 text-slate-600">
+                <div className="ml-6 p-2.5 rounded-lg bg-slate-950/80 border border-slate-800 flex items-start justify-between gap-2 text-xs">
+                  <div className="flex items-start gap-1.5 text-slate-300">
                     <span className="text-cyan-400 font-semibold flex-shrink-0">Action:</span>
                     <span>{item.recommendedAction}</span>
                   </div>

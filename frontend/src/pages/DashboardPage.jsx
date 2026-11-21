@@ -150,14 +150,14 @@ export const DashboardPage = () => {
               ? 'Live Grounded Intelligence Dossier'
               : 'Demonstration Intelligence Dossier'}
           </span>
-          <span className="text-slate-400 hidden md:inline">
+          <span className="text-slate-300 hidden md:inline">
             {report.isCustomDestination || !currentInvestigation.isSample
               ? '— Real-time intelligence synthesized from live search, SerpApi Google Maps, and AI verification.'
               : '— All data below is clearly labeled sample telemetry for Phase 2 frontend verification.'}
           </span>
         </div>
         <div className="flex items-center gap-2 self-end sm:self-center">
-          <span className="text-slate-400 text-[11px]">Active Investigation:</span>
+          <span className="text-slate-300 text-[11px] font-medium">Active Investigation:</span>
           <select
             value={currentInvestigation.destinationId}
             onChange={(e) => {
@@ -175,7 +175,7 @@ export const DashboardPage = () => {
                 setCurrentInvestigation(switchInv);
               }
             }}
-            className="bg-navy-800 border border-navy-700 text-xs text-white rounded-lg px-2.5 py-1 focus:outline-none focus:border-cyan-500"
+            className="bg-slate-900 border border-slate-700 text-xs text-white rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-cyan-400 font-medium"
           >
             {report.isCustomDestination && (
               <option value={currentInvestigation.destinationId}>

@@ -636,29 +636,29 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
       </div>
 
       {/* 4. Bottom: Small Category Legend with Coloured Indicators */}
-      <div className="px-4 py-2 bg-navy-950/80 border-t border-navy-800/60 flex items-center justify-between text-xs text-slate-400 gap-3">
+      <div className="px-4 py-2 bg-navy-950/90 border-t border-navy-800/60 flex items-center justify-between text-xs text-slate-300 gap-3">
         <div className="flex items-center gap-3.5 flex-wrap">
-          <span className="flex items-center gap-1.5 text-[11px]">
+          <span className="flex items-center gap-1.5 text-[11px] font-medium text-slate-200">
             <span className="w-2 h-2 rounded-full bg-rose-500" /> Hospitals
           </span>
-          <span className="flex items-center gap-1.5 text-[11px]">
+          <span className="flex items-center gap-1.5 text-[11px] font-medium text-slate-200">
             <span className="w-2 h-2 rounded-full bg-violet-500" /> Embassies
           </span>
-          <span className="flex items-center gap-1.5 text-[11px]">
+          <span className="flex items-center gap-1.5 text-[11px] font-medium text-slate-200">
             <span className="w-2 h-2 rounded-full bg-emerald-400" /> Safe Havens
           </span>
-          <span className="flex items-center gap-1.5 text-[11px]">
+          <span className="flex items-center gap-1.5 text-[11px] font-medium text-slate-200">
             <span className="w-2 h-2 rounded-full bg-amber-500" /> Caution Zones
           </span>
-          <span className="flex items-center gap-1.5 text-[11px]">
+          <span className="flex items-center gap-1.5 text-[11px] font-medium text-slate-200">
             <span className="w-2 h-2 rounded-full bg-indigo-500" /> Transit
           </span>
-          <span className="flex items-center gap-1.5 text-[11px]">
+          <span className="flex items-center gap-1.5 text-[11px] font-medium text-slate-200">
             <span className="w-2 h-2 rounded-full bg-cyan-500" /> Police
           </span>
         </div>
 
-        <div className="text-[10px] font-mono text-slate-500">
+        <div className="text-[10px] font-mono text-slate-400">
           &copy; OpenStreetMap
         </div>
       </div>

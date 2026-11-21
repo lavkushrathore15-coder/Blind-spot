@@ -301,16 +301,16 @@ export const GlassAppShell = ({ children }) => {
         </aside>
 
         {/* ============================================================== */}
-        {/* RIGHT MAIN PANEL: Crisp Frosted Bright White Glass             */}
+        {/* RIGHT MAIN PANEL: Frosted Dark Tactical Glass                  */}
         {/* ============================================================== */}
-        <main className="flex-1 bg-white/94 backdrop-blur-2xl overflow-y-auto flex flex-col min-w-0">
-          {/* Top Bar (Matches Activity / Substack Header) */}
-          <header className="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <main className="flex-1 bg-slate-950/75 backdrop-blur-2xl overflow-y-auto flex flex-col min-w-0 text-slate-100">
+          {/* Top Bar (Matches Activity / Substack Header in High-Contrast Dark Glass) */}
+          <header className="sticky top-0 z-20 bg-slate-950/70 backdrop-blur-md border-b border-white/10 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
                 {headerMeta.title}
               </h1>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-slate-300 mt-0.5">
                 {headerMeta.subtitle}
               </p>
             </div>
@@ -324,25 +324,25 @@ export const GlassAppShell = ({ children }) => {
                   placeholder="Search destination (e.g. Bogotá)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-8 py-1.5 text-xs bg-slate-100 hover:bg-slate-200/70 focus:bg-white border border-slate-200 focus:border-cyan-500 rounded-xl text-slate-900 placeholder-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
+                  className="w-full pl-9 pr-8 py-1.5 text-xs bg-slate-900/90 hover:bg-slate-900 focus:bg-slate-950 border border-slate-700/80 focus:border-cyan-400 rounded-xl text-white placeholder-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
                 />
-                <kbd className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 bg-white border border-slate-200 px-1.5 py-0.2 rounded shadow-2xs">
+                <kbd className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-300 bg-slate-800 border border-slate-700 px-1.5 py-0.2 rounded shadow-2xs">
                   /
                 </kbd>
               </form>
 
               <button
                 onClick={() => navigate('/dashboard')}
-                className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800 transition-colors shadow-xs flex items-center gap-1.5 flex-shrink-0"
+                className="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition-colors shadow-xs flex items-center gap-1.5 flex-shrink-0"
               >
-                <LayoutDashboard className="w-3.5 h-3.5 text-slate-600" />
+                <LayoutDashboard className="w-3.5 h-3.5 text-slate-400" />
                 <span className="hidden sm:inline">Dashboard</span>
               </button>
             </div>
           </header>
 
           {/* Substack-Style Horizontal Filter Tabs Bar */}
-          <div className="px-6 py-2.5 bg-slate-50/70 border-b border-slate-200/80 flex items-center justify-between gap-4 flex-wrap text-xs">
+          <div className="px-6 py-2.5 bg-slate-950/50 border-b border-white/10 flex items-center justify-between gap-4 flex-wrap text-xs">
             <div className="flex items-center gap-2 overflow-x-auto">
               {[
                 { id: 'all', label: 'All', count: 7 },
@@ -357,16 +357,16 @@ export const GlassAppShell = ({ children }) => {
                     onClick={() => setActiveFilterTab(tab.id)}
                     className={`px-3 py-1.5 rounded-xl font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                       isActive
-                        ? 'bg-white text-slate-900 font-bold border border-slate-200 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                        ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-400/50 shadow-glow-cyan-sm'
+                        : 'text-slate-300 hover:text-white hover:bg-white/10 border border-transparent'
                     }`}
                   >
                     <span>{tab.label}</span>
                     <span
                       className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono font-bold ${
                         isActive
-                          ? 'bg-slate-900 text-white'
-                          : 'bg-slate-200 text-slate-600'
+                          ? 'bg-cyan-400 text-slate-950 font-extrabold'
+                          : 'bg-slate-800 text-slate-300 border border-slate-700'
                       }`}
                     >
                       {tab.count}
@@ -376,9 +376,9 @@ export const GlassAppShell = ({ children }) => {
               })}
             </div>
 
-            <div className="flex items-center gap-3 text-[11px] text-slate-500 font-medium">
-              <span className="flex items-center gap-1 text-emerald-700">
-                <Check className="w-3.5 h-3.5 text-emerald-600" />
+            <div className="flex items-center gap-3 text-[11px] text-slate-300 font-medium">
+              <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+                <Check className="w-3.5 h-3.5 text-emerald-400" />
                 Live Telemetry Synced
               </span>
             </div>
