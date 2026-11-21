@@ -94,25 +94,25 @@ export const DestinationOverviewCard = ({ destination, className }) => {
   const cautionSectors = neighborhoods.filter((n) => n.tier !== 'Safe Haven' && n.safetyScore < 85);
 
   return (
-    <div className={`glass-card rounded-2xl p-6 border border-slate-200/90 space-y-6 flex flex-col justify-between shadow-glass-light ${className || ''}`}>
+    <div className={`glass-card rounded-2xl p-6 border border-navy-700/60 space-y-6 flex flex-col justify-between ${className || ''}`}>
       {/* 1. Top Advisory Banner */}
-      <div className="p-4 rounded-xl bg-amber-50/80 border border-amber-200/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
+      <div className="p-4 rounded-xl bg-gradient-to-r from-navy-850 to-navy-800 border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-start gap-3">
-          <div className="p-2.5 rounded-xl bg-amber-100 border border-amber-200 text-amber-700 mt-0.5 sm:mt-0 flex-shrink-0">
+          <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 mt-0.5 sm:mt-0 flex-shrink-0">
             <ShieldAlert className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-mono uppercase tracking-wider text-amber-900 font-bold">
+              <span className="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold">
                 Diplomatic Safety Advisory
               </span>
               <Badge variant="warning">Level {advisory.level || 1}: {advisory.label || 'Exercise Caution'}</Badge>
             </div>
-            <p className="text-xs text-amber-950 mt-1 leading-relaxed font-medium">{advisory.summary}</p>
+            <p className="text-xs text-slate-200 mt-1 leading-relaxed">{advisory.summary}</p>
           </div>
         </div>
 
-        <div className="text-[11px] font-mono text-amber-800 whitespace-nowrap self-end sm:self-center font-medium">
+        <div className="text-[11px] font-mono text-slate-400 whitespace-nowrap self-end sm:self-center">
           Verified: {advisory.lastUpdated || 'Current'}
         </div>
       </div>
@@ -120,31 +120,31 @@ export const DestinationOverviewCard = ({ destination, className }) => {
       {/* 2. Emergency Quick-Dial Bar */}
       <div className="space-y-2">
         <div className="flex items-center justify-between text-xs">
-          <span className="font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-            <Phone className="w-3.5 h-3.5 text-cyan-700" />
+          <span className="font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+            <Phone className="w-3.5 h-3.5 text-cyan-400" />
             Verified Local Emergency Dispatch
           </span>
-          <span className="text-[11px] text-slate-500 font-medium">Tap number to copy</span>
+          <span className="text-[11px] text-slate-400">Tap number to copy</span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {[
-            { label: 'Police', number: emergencyNumbers.police, color: 'text-cyan-800' },
-            { label: 'Ambulance', number: emergencyNumbers.ambulance, color: 'text-rose-700' },
-            { label: 'Tourist Police', number: emergencyNumbers.touristPolice, color: 'text-amber-800' },
-            { label: 'Fire Service', number: emergencyNumbers.fire, color: 'text-indigo-800' },
+            { label: 'Police', number: emergencyNumbers.police, color: 'text-cyan-400 border-cyan-500/30' },
+            { label: 'Ambulance', number: emergencyNumbers.ambulance, color: 'text-rose-400 border-rose-500/30' },
+            { label: 'Tourist Police', number: emergencyNumbers.touristPolice, color: 'text-amber-400 border-amber-500/30' },
+            { label: 'Fire Service', number: emergencyNumbers.fire, color: 'text-indigo-400 border-indigo-500/30' },
           ].map((item) => (
             <button
               key={item.label}
               onClick={() => copyNumber(item.label, item.number)}
-              className="p-2.5 rounded-xl bg-white/90 border border-slate-200/90 hover:border-cyan-500 hover:bg-white transition-all text-left group shadow-xs"
+              className="p-2.5 rounded-xl bg-navy-900/80 border border-navy-700/60 hover:border-cyan-500/50 hover:bg-navy-850 transition-all text-left group"
             >
               <div className="flex items-center justify-between">
-                <span className="text-[11px] text-slate-500 font-medium">{item.label}</span>
+                <span className="text-[11px] text-slate-400">{item.label}</span>
                 {copiedKey === item.label ? (
-                  <Check className="w-3 h-3 text-emerald-600" />
+                  <Check className="w-3 h-3 text-emerald-400" />
                 ) : (
-                  <Copy className="w-3 h-3 text-slate-400 group-hover:text-slate-600" />
+                  <Copy className="w-3 h-3 text-slate-500 group-hover:text-slate-300" />
                 )}
               </div>
               <div className={`text-sm font-mono font-bold mt-1 ${item.color}`}>
@@ -156,52 +156,52 @@ export const DestinationOverviewCard = ({ destination, className }) => {
       </div>
 
       {/* 3. Quick Facts Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2 border-t border-slate-200/80 text-xs">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2 border-t border-navy-700/50 text-xs">
         <div className="space-y-1">
-          <span className="text-slate-500 flex items-center gap-1.5 font-medium">
-            <Globe className="w-3.5 h-3.5 text-cyan-600" /> Currency & Cash
+          <span className="text-slate-400 flex items-center gap-1.5">
+            <Globe className="w-3.5 h-3.5 text-cyan-400" /> Currency & Cash
           </span>
-          <p className="font-semibold text-slate-800">{quickFacts.currency || 'N/A'}</p>
+          <p className="font-medium text-slate-200">{quickFacts.currency || 'N/A'}</p>
         </div>
 
         <div className="space-y-1">
-          <span className="text-slate-500 flex items-center gap-1.5 font-medium">
-            <Info className="w-3.5 h-3.5 text-indigo-600" /> Language Grid
+          <span className="text-slate-400 flex items-center gap-1.5">
+            <Info className="w-3.5 h-3.5 text-indigo-400" /> Language Grid
           </span>
-          <p className="font-semibold text-slate-800">{quickFacts.language || 'N/A'}</p>
+          <p className="font-medium text-slate-200">{quickFacts.language || 'N/A'}</p>
         </div>
 
         <div className="space-y-1">
-          <span className="text-slate-500 flex items-center gap-1.5 font-medium">
-            <Zap className="w-3.5 h-3.5 text-amber-600" /> Power Plugs
+          <span className="text-slate-400 flex items-center gap-1.5">
+            <Zap className="w-3.5 h-3.5 text-amber-400" /> Power Plugs
           </span>
-          <p className="font-semibold text-slate-800">{quickFacts.plugs || 'N/A'}</p>
+          <p className="font-medium text-slate-200">{quickFacts.plugs || 'N/A'}</p>
         </div>
 
         <div className="space-y-1">
-          <span className="text-slate-500 flex items-center gap-1.5 font-medium">
-            <Droplet className="w-3.5 h-3.5 text-sky-600" /> Tap Water Safety
+          <span className="text-slate-400 flex items-center gap-1.5">
+            <Droplet className="w-3.5 h-3.5 text-sky-400" /> Tap Water Safety
           </span>
-          <p className="font-semibold text-slate-800">{quickFacts.tapWater || 'N/A'}</p>
+          <p className="font-medium text-slate-200">{quickFacts.tapWater || 'N/A'}</p>
         </div>
       </div>
 
       {/* 4. Climate & Meteorological Telemetry Section */}
       {currentClimate && (
-        <div className="p-4 rounded-xl bg-white/70 border border-slate-200/90 space-y-3 text-xs shadow-xs">
+        <div className="p-4 rounded-xl bg-navy-900/70 border border-navy-800 space-y-3 text-xs">
           <div className="flex items-center justify-between gap-2 flex-wrap">
             <div className="flex items-center gap-2">
-              <CloudSun className="w-4 h-4 text-cyan-600 flex-shrink-0" />
-              <span className="font-bold text-slate-900">Climate & Physiologic Factors</span>
+              <CloudSun className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+              <span className="font-semibold text-white">Climate & Physiologic Factors</span>
             </div>
             {currentClimate.isLive && (
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-cyan-50 border border-cyan-200 text-cyan-800 font-bold flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-cyan-950/90 border border-cyan-500/40 text-cyan-300 font-bold flex items-center gap-1.5 shadow-glow-cyan-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                 Live OpenWeather Telemetry
               </span>
             )}
             {isLoadingWeather && !currentClimate.isLive && (
-              <span className="text-[10px] text-cyan-700 font-mono flex items-center gap-1 font-medium">
+              <span className="text-[10px] text-cyan-400 font-mono flex items-center gap-1">
                 <RefreshCw className="w-3 h-3 animate-spin" /> Ingesting satellite telemetry...
               </span>
             )}
@@ -209,41 +209,41 @@ export const DestinationOverviewCard = ({ destination, className }) => {
 
           {/* 4-Metric Live Micro-Pills Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-            <div className="p-2.5 rounded-xl bg-white/90 border border-slate-200/90 flex items-center gap-2.5 shadow-xs">
-              <Thermometer className="w-4 h-4 text-rose-500 flex-shrink-0" />
+            <div className="p-2.5 rounded-lg bg-navy-950/80 border border-navy-750/70 flex items-center gap-2.5">
+              <Thermometer className="w-4 h-4 text-rose-400 flex-shrink-0" />
               <div className="min-w-0">
-                <span className="text-[10px] text-slate-500 block uppercase font-mono font-medium">Temp / Feels</span>
-                <span className="text-xs font-bold text-slate-900 font-mono truncate block">
+                <span className="text-[10px] text-slate-400 block uppercase font-mono">Temp / Feels</span>
+                <span className="text-xs font-bold text-white font-mono truncate block">
                   {currentClimate.temp != null ? `${currentClimate.temp}°C` : '18°C'}
                 </span>
               </div>
             </div>
 
-            <div className="p-2.5 rounded-xl bg-white/90 border border-slate-200/90 flex items-center gap-2.5 shadow-xs">
-              <Droplets className="w-4 h-4 text-sky-500 flex-shrink-0" />
+            <div className="p-2.5 rounded-lg bg-navy-950/80 border border-navy-750/70 flex items-center gap-2.5">
+              <Droplets className="w-4 h-4 text-sky-400 flex-shrink-0" />
               <div className="min-w-0">
-                <span className="text-[10px] text-slate-500 block uppercase font-mono font-medium">Humidity</span>
-                <span className="text-xs font-bold text-slate-900 font-mono truncate block">
+                <span className="text-[10px] text-slate-400 block uppercase font-mono">Humidity</span>
+                <span className="text-xs font-bold text-white font-mono truncate block">
                   {currentClimate.humidity != null ? `${currentClimate.humidity}%` : '65%'}
                 </span>
               </div>
             </div>
 
-            <div className="p-2.5 rounded-xl bg-white/90 border border-slate-200/90 flex items-center gap-2.5 shadow-xs">
-              <Wind className="w-4 h-4 text-cyan-600 flex-shrink-0" />
+            <div className="p-2.5 rounded-lg bg-navy-950/80 border border-navy-750/70 flex items-center gap-2.5">
+              <Wind className="w-4 h-4 text-cyan-400 flex-shrink-0" />
               <div className="min-w-0">
-                <span className="text-[10px] text-slate-500 block uppercase font-mono font-medium">Wind Speed</span>
-                <span className="text-xs font-bold text-slate-900 font-mono truncate block">
+                <span className="text-[10px] text-slate-400 block uppercase font-mono">Wind Speed</span>
+                <span className="text-xs font-bold text-white font-mono truncate block">
                   {currentClimate.windSpeed != null ? `${currentClimate.windSpeed} m/s` : '3.2 m/s'}
                 </span>
               </div>
             </div>
 
-            <div className="p-2.5 rounded-xl bg-white/90 border border-slate-200/90 flex items-center gap-2.5 shadow-xs">
-              <Mountain className="w-4 h-4 text-amber-600 flex-shrink-0" />
+            <div className="p-2.5 rounded-lg bg-navy-950/80 border border-navy-750/70 flex items-center gap-2.5">
+              <Mountain className="w-4 h-4 text-amber-400 flex-shrink-0" />
               <div className="min-w-0">
-                <span className="text-[10px] text-slate-500 block uppercase font-mono font-medium">Atmosphere</span>
-                <span className="text-xs font-bold text-slate-900 font-mono truncate block">
+                <span className="text-[10px] text-slate-400 block uppercase font-mono">Atmosphere</span>
+                <span className="text-xs font-bold text-white font-mono truncate block">
                   {currentClimate.condition || 'Temperate'}
                 </span>
               </div>
@@ -251,14 +251,14 @@ export const DestinationOverviewCard = ({ destination, className }) => {
           </div>
 
           {/* Meteorological Narrative & Physiological Risk Details */}
-          <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200 text-slate-700 space-y-1">
-            <p className="text-xs leading-relaxed text-slate-800">
-              <strong className="text-cyan-800">Conditions: </strong>
+          <div className="p-2.5 rounded-lg bg-navy-950/50 border border-navy-800 text-slate-300 space-y-1">
+            <p className="text-xs leading-relaxed text-slate-200">
+              <strong className="text-cyan-300">Conditions: </strong>
               {currentClimate.weather}
             </p>
             {currentClimate.altitude && (
-              <p className="text-xs leading-relaxed text-slate-700">
-                <strong className="text-amber-800">Physiological Factors: </strong>
+              <p className="text-xs leading-relaxed text-slate-300">
+                <strong className="text-amber-300">Physiological Factors: </strong>
                 {currentClimate.altitude}
               </p>
             )}
@@ -266,38 +266,38 @@ export const DestinationOverviewCard = ({ destination, className }) => {
         </div>
       )}
 
-      {/* 5. Tactical Ground Intelligence & Security Safeguards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 pt-2 border-t border-slate-200/80 text-xs">
+      {/* 5. Tactical Ground Intelligence & Security Safeguards (Eliminates empty space) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 pt-2 border-t border-navy-700/50 text-xs">
         {/* Panel A: Transit & Mobility Protocol */}
-        <div className="p-3.5 rounded-xl bg-white/70 border border-slate-200/90 space-y-2 flex flex-col justify-between shadow-xs">
+        <div className="p-3 rounded-xl bg-navy-900/60 border border-navy-800 space-y-2 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-1.5 text-cyan-800 font-bold mb-1">
-              <Navigation className="w-3.5 h-3.5 text-cyan-600 flex-shrink-0" />
+            <div className="flex items-center gap-1.5 text-cyan-400 font-semibold mb-1">
+              <Navigation className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
               <span>Transit & Arrival Protocol</span>
             </div>
-            <p className="text-slate-600 text-[11px] leading-relaxed">
+            <p className="text-slate-300 text-[11px] leading-relaxed">
               {transit.recommended || 'Pre-booked authorized taxis, official rideshare apps, or verified hotel transfers.'}
             </p>
           </div>
-          <div className="pt-2 border-t border-slate-200 text-[10px] text-slate-500">
-            <span className="font-semibold text-slate-700">Airport & Hubs: </span>
+          <div className="pt-2 border-t border-navy-800/80 text-[10px] text-slate-400">
+            <span className="font-medium text-slate-300">Airport & Hubs: </span>
             {transit.airportProtocol || 'Book transfers strictly via official inside-terminal counters.'}
           </div>
         </div>
 
         {/* Panel B: Walking & Night Safety Corridors */}
-        <div className="p-3.5 rounded-xl bg-white/70 border border-slate-200/90 space-y-2 flex flex-col justify-between shadow-xs">
+        <div className="p-3 rounded-xl bg-navy-900/60 border border-navy-800 space-y-2 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-1.5 text-emerald-800 font-bold mb-1">
-              <Moon className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+            <div className="flex items-center gap-1.5 text-emerald-400 font-semibold mb-1">
+              <Moon className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
               <span>Safe Corridors & Movement</span>
             </div>
-            <p className="text-slate-600 text-[11px] leading-relaxed">
+            <p className="text-slate-300 text-[11px] leading-relaxed">
               {nightSafety.safetyHours || 'Safe for pedestrian transit until 21:00 in well-lit central sectors.'}
             </p>
           </div>
-          <div className="pt-2 border-t border-slate-200 text-[10px] text-slate-500">
-            <span className="font-semibold text-emerald-700">Verified Havens: </span>
+          <div className="pt-2 border-t border-navy-800/80 text-[10px] text-slate-400">
+            <span className="font-medium text-emerald-300">Verified Havens: </span>
             {safeSectors.length > 0
               ? safeSectors.slice(0, 2).map((s) => s.name).join(', ')
               : 'Central commercial avenues & hotel districts'}
@@ -305,17 +305,17 @@ export const DestinationOverviewCard = ({ destination, className }) => {
         </div>
 
         {/* Panel C: Local Street Safeguards & Scam Avoidance */}
-        <div className="p-3.5 rounded-xl bg-white/70 border border-slate-200/90 space-y-2 flex flex-col justify-between shadow-xs">
+        <div className="p-3 rounded-xl bg-navy-900/60 border border-navy-800 space-y-2 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-1.5 text-amber-800 font-bold mb-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
+            <div className="flex items-center gap-1.5 text-amber-400 font-semibold mb-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
               <span>Key Street Safeguards</span>
             </div>
-            <ul className="text-slate-600 text-[11px] space-y-1">
+            <ul className="text-slate-300 text-[11px] space-y-1">
               {scams.length > 0 ? (
                 scams.slice(0, 2).map((s, idx) => (
                   <li key={idx} className="line-clamp-2">
-                    • <strong className="text-slate-800">{s.title}:</strong> {s.prevention || s.description}
+                    • <strong className="text-slate-200">{s.title}:</strong> {s.prevention || s.description}
                   </li>
                 ))
               ) : (
@@ -326,8 +326,8 @@ export const DestinationOverviewCard = ({ destination, className }) => {
               )}
             </ul>
           </div>
-          <div className="pt-2 border-t border-slate-200 text-[10px] text-slate-500">
-            <span className="font-semibold text-amber-700">Risk Profile: </span>
+          <div className="pt-2 border-t border-navy-800/80 text-[10px] text-slate-400">
+            <span className="font-medium text-amber-300">Risk Profile: </span>
             Standard situational vigilance recommended
           </div>
         </div>

@@ -71,28 +71,28 @@ export const Navbar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+    <header className="sticky top-0 z-40 bg-navy-950/85 backdrop-blur-md border-b border-navy-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <NavLink to="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-indigo-600 flex items-center justify-center shadow-md shadow-cyan-600/20 group-hover:scale-105 transition-transform text-white">
-            <Eye className="w-5 h-5" />
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-glow-cyan-sm group-hover:scale-105 transition-transform">
+            <Eye className="w-5 h-5 text-navy-950" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-extrabold text-lg tracking-tight text-slate-900 group-hover:text-cyan-700 transition-colors">
+              <span className="font-extrabold text-lg tracking-tight text-white group-hover:text-cyan-300 transition-colors">
                 BlindSpot
               </span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-50 border border-cyan-200 text-cyan-800 font-mono font-semibold">
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-mono font-semibold">
                 v2.0
               </span>
             </div>
-            <p className="text-[10px] text-slate-500 hidden sm:block">Tactical Travel Intelligence</p>
+            <p className="text-[10px] text-slate-400 hidden sm:block">Tactical Travel Intelligence</p>
           </div>
         </NavLink>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl border border-slate-200/80">
+        <nav className="hidden md:flex items-center gap-1 bg-navy-900/60 p-1 rounded-xl border border-navy-800/80">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
@@ -103,8 +103,8 @@ export const Navbar = () => {
                 className={({ isActive }) =>
                   `px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-white text-cyan-800 border border-slate-200/90 shadow-xs font-semibold'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                      ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 shadow-glow-cyan-sm'
+                      : 'text-slate-400 hover:text-white hover:bg-navy-800/60'
                   }`
                 }
               >
@@ -121,22 +121,22 @@ export const Navbar = () => {
           <div className="flex items-center gap-1.5 text-xs">
             <span
               className={`w-2 h-2 rounded-full ${
-                backendHealthy ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'
+                backendHealthy ? 'bg-emerald-400 animate-pulse' : 'bg-rose-400'
               }`}
             />
-            <span className="text-[11px] font-mono text-slate-600">
+            <span className="text-[11px] font-mono text-slate-400">
               API {backendHealthy ? 'Online' : 'Offline'}
             </span>
           </div>
 
           {/* Phase 3 SerpApi Status Indicator */}
-          <div className="flex items-center gap-1.5 text-xs border-l border-slate-200 pl-3">
+          <div className="flex items-center gap-1.5 text-xs border-l border-navy-800 pl-3">
             <span
               className={`w-2 h-2 rounded-full ${
-                serpApiStatus?.configured ? 'bg-cyan-500 animate-pulse' : 'bg-amber-500'
+                serpApiStatus?.configured ? 'bg-cyan-400 animate-pulse' : 'bg-amber-400'
               }`}
             />
-            <span className="text-[11px] font-mono text-slate-600">
+            <span className="text-[11px] font-mono text-slate-400">
               SerpApi {serpApiStatus?.configured ? 'Live' : 'Pending'}
             </span>
           </div>
@@ -145,6 +145,7 @@ export const Navbar = () => {
             size="sm"
             onClick={() => navigate('/investigate')}
             icon={Plus}
+            className="shadow-glow-cyan-sm"
           >
             Investigate
           </Button>
@@ -154,7 +155,7 @@ export const Navbar = () => {
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-white text-slate-700 hover:text-slate-900 border border-slate-200 shadow-xs"
+            className="p-2 rounded-lg bg-navy-900 text-slate-300 hover:text-white border border-navy-800"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -164,7 +165,7 @@ export const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 py-4 space-y-2 animate-in fade-in duration-200 shadow-lg">
+        <div className="md:hidden bg-navy-900 border-b border-navy-800 px-4 py-4 space-y-2 animate-in fade-in duration-200">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
@@ -173,27 +174,27 @@ export const Navbar = () => {
                 to={link.to}
                 end={link.end}
                 className={({ isActive }) =>
-                  `w-full px-3 py-2.5 rounded-xl text-sm font-medium flex items-center gap-2.5 ${
+                  `w-full px-3 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2.5 ${
                     isActive
-                      ? 'bg-cyan-50 text-cyan-800 border border-cyan-200 font-semibold'
-                      : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
+                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                      : 'text-slate-300 hover:text-white hover:bg-navy-800'
                   }`
                 }
               >
-                <Icon className="w-4 h-4 text-cyan-600" />
+                <Icon className="w-4 h-4 text-cyan-400" />
                 <span>{link.label}</span>
               </NavLink>
             );
           })}
 
-          <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
-            <span className="text-xs text-slate-500 font-mono">
+          <div className="pt-3 border-t border-navy-800 flex items-center justify-between">
+            <span className="text-xs text-slate-400">
               Backend Status: {backendHealthy ? 'Online (HTTP 200)' : 'Offline'}
             </span>
             <Button
               size="sm"
               onClick={() => navigate('/investigate')}
-              className="w-full mt-1"
+              className="w-full mt-2"
             >
               Start Investigation
             </Button>

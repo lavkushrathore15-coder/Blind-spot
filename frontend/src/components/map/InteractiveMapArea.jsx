@@ -129,20 +129,20 @@ function MarkerPopupContent({ place, onCopyPhone, copiedPhoneId }) {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <div className="p-3 space-y-2 text-slate-800 min-w-[200px]">
+    <div className="p-3 space-y-2 text-slate-200 min-w-[200px]">
       {/* Location name and Category */}
       <div className="flex items-start justify-between gap-2">
-        <h4 className="text-xs font-bold text-slate-900 leading-snug break-words flex-1">
+        <h4 className="text-xs font-semibold text-white leading-snug break-words flex-1">
           {place.title}
         </h4>
-        <span className="text-[10px] font-mono uppercase font-bold tracking-wider px-1.5 py-0.5 rounded-md bg-cyan-50 text-cyan-800 border border-cyan-200 flex-shrink-0">
+        <span className="text-[10px] font-mono uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-navy-800 text-cyan-400 border border-navy-700 flex-shrink-0">
           {place.category}
         </span>
       </div>
 
       {/* Address (if available) */}
       {place.address && (
-        <p className="text-[11px] text-slate-600 leading-relaxed flex items-start gap-1">
+        <p className="text-[11px] text-slate-300 leading-relaxed flex items-start gap-1">
           <MapPin className="w-3 h-3 text-slate-400 flex-shrink-0 mt-0.5" />
           <span className="break-words">{place.address}</span>
         </p>
@@ -150,11 +150,11 @@ function MarkerPopupContent({ place, onCopyPhone, copiedPhoneId }) {
 
       {/* Additional details only when explicitly requested */}
       {(place.phone || place.rating != null || place.openState) && (
-        <div className="pt-1.5 border-t border-slate-200">
+        <div className="pt-1.5 border-t border-navy-800">
           {!showDetails ? (
             <button
               onClick={() => setShowDetails(true)}
-              className="text-[10px] text-cyan-700 hover:text-cyan-800 font-semibold flex items-center gap-1 transition-colors"
+              className="text-[10px] text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-1 transition-colors"
             >
               <span>More</span>
               <ChevronDown className="w-3 h-3" />
@@ -162,18 +162,18 @@ function MarkerPopupContent({ place, onCopyPhone, copiedPhoneId }) {
           ) : (
             <div className="space-y-1.5 pt-1 text-[11px] animate-in fade-in">
               {place.phone && (
-                <div className="flex items-center justify-between text-cyan-800 font-mono">
+                <div className="flex items-center justify-between text-cyan-300 font-mono">
                   <span className="flex items-center gap-1">
-                    <Phone className="w-3 h-3 text-cyan-600" />
+                    <Phone className="w-3 h-3 text-cyan-400" />
                     {place.phone}
                   </span>
                   <button
                     onClick={(e) => onCopyPhone(place.id, place.phone, e)}
-                    className="p-0.5 text-slate-400 hover:text-slate-700 transition-colors"
+                    className="p-0.5 text-slate-400 hover:text-white transition-colors"
                     title="Copy"
                   >
                     {copiedPhoneId === place.id ? (
-                      <Check className="w-3 h-3 text-emerald-600" />
+                      <Check className="w-3 h-3 text-emerald-400" />
                     ) : (
                       <Copy className="w-3 h-3" />
                     )}
@@ -182,8 +182,8 @@ function MarkerPopupContent({ place, onCopyPhone, copiedPhoneId }) {
               )}
 
               {place.rating != null && (
-                <div className="flex items-center gap-1 text-amber-600 font-medium">
-                  <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+                <div className="flex items-center gap-1 text-amber-400">
+                  <Star className="w-3 h-3 fill-amber-400" />
                   <span>{place.rating}</span>
                   {place.reviews != null && (
                     <span className="text-slate-500">({place.reviews})</span>
@@ -192,7 +192,7 @@ function MarkerPopupContent({ place, onCopyPhone, copiedPhoneId }) {
               )}
 
               {place.openState && (
-                <div className="flex items-center gap-1 text-emerald-700 font-medium">
+                <div className="flex items-center gap-1 text-emerald-400">
                   <Clock className="w-3 h-3" />
                   <span>{place.openState}</span>
                 </div>
@@ -204,7 +204,7 @@ function MarkerPopupContent({ place, onCopyPhone, copiedPhoneId }) {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 w-full py-1 px-2 rounded-lg bg-cyan-50 hover:bg-cyan-100 border border-cyan-200 text-cyan-800 text-[10px] font-semibold flex items-center justify-center gap-1 transition-colors"
+                className="mt-1 w-full py-1 px-2 rounded bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 text-[10px] font-medium flex items-center justify-center gap-1 transition-colors"
               >
                 <span>Directions</span>
                 <ExternalLink className="w-2.5 h-2.5" />
@@ -228,7 +228,7 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
 
   // Map state
   const [mapInstance, setMapInstance] = useState(null);
-  const [tileLayerType, setTileLayerType] = useState('street'); // 'street' | 'dark'
+  const [tileLayerType, setTileLayerType] = useState('dark'); // 'dark' | 'street'
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [activePin, setActivePin] = useState(null);
   const [copiedPhoneId, setCopiedPhoneId] = useState(null);
@@ -434,19 +434,19 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
   };
 
   return (
-    <div className={`glass-card rounded-2xl overflow-hidden border border-slate-200/90 flex flex-col shadow-glass-light ${className || ''}`}>
+    <div className={`glass-card rounded-2xl overflow-hidden border border-navy-750/70 flex flex-col shadow-xl ${className || ''}`}>
       {/* 1. Header: Title, Destination & Coordinates */}
-      <div className="px-4 py-3 bg-white/80 backdrop-blur-md border-b border-slate-200/80 flex items-center justify-between gap-3">
+      <div className="px-4 py-3 bg-navy-900/90 border-b border-navy-750/70 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5 flex-wrap min-w-0">
-          <h3 className="text-sm font-bold text-slate-900 tracking-wide">
+          <h3 className="text-sm font-semibold text-white tracking-wide">
             Tactical Security & Facility Grid
           </h3>
-          <span className="text-slate-400 hidden sm:inline">•</span>
-          <span className="text-xs font-semibold text-slate-600">
+          <span className="text-slate-600 hidden sm:inline">•</span>
+          <span className="text-xs font-medium text-slate-300">
             {targetDestination}
           </span>
           {coordsLabel && (
-            <span className="text-[11px] font-mono px-2 py-0.5 rounded-lg bg-slate-100 border border-slate-200 text-cyan-800 font-medium">
+            <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-navy-800/90 border border-navy-700/80 text-cyan-400">
               {coordsLabel}
             </span>
           )}
@@ -454,23 +454,23 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
 
         {/* Minimal Tile Switch & Refresh */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <div className="flex items-center bg-slate-100 p-0.5 rounded-xl border border-slate-200 text-xs shadow-xs">
+          <div className="flex items-center bg-navy-950 p-0.5 rounded-lg border border-navy-800 text-xs">
             <button
               onClick={() => setTileLayerType('dark')}
-              className={`px-2 py-0.5 rounded-lg transition-all text-[11px] font-medium ${
+              className={`px-2 py-0.5 rounded transition-all text-[11px] font-medium ${
                 tileLayerType === 'dark'
-                  ? 'bg-slate-900 text-white font-bold shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-cyan-500 text-navy-950 font-bold'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               Dark
             </button>
             <button
               onClick={() => setTileLayerType('street')}
-              className={`px-2 py-0.5 rounded-lg transition-all text-[11px] font-medium ${
+              className={`px-2 py-0.5 rounded transition-all text-[11px] font-medium ${
                 tileLayerType === 'street'
-                  ? 'bg-cyan-600 text-white font-bold shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-cyan-500 text-navy-950 font-bold'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               Street
@@ -480,16 +480,16 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
           <button
             onClick={fetchMapLocations}
             disabled={isLoading}
-            className="p-1 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-cyan-700 hover:bg-slate-50 transition-colors shadow-xs"
+            className="p-1 rounded-lg bg-navy-850 border border-navy-800 text-slate-400 hover:text-cyan-400 transition-colors"
             title="Refresh"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-cyan-600' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-cyan-400' : ''}`} />
           </button>
         </div>
       </div>
 
       {/* 2. Filters: One Clean Horizontal Row */}
-      <div className="px-4 py-2 bg-white/60 backdrop-blur-md border-b border-slate-200/80 flex items-center gap-1.5 overflow-x-auto">
+      <div className="px-4 py-2 bg-navy-950/80 border-b border-navy-800 flex items-center gap-1.5 overflow-x-auto">
         {availableCategories.map((filter) => {
           const Icon = filter.icon;
           const isSelected = selectedFilter === filter.id;
@@ -500,10 +500,10 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
                 setSelectedFilter(filter.id);
                 setActivePin(null);
               }}
-              className={`px-2.5 py-1 rounded-xl text-xs font-medium flex items-center gap-1.5 whitespace-nowrap transition-all ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-medium flex items-center gap-1.5 whitespace-nowrap transition-colors ${
                 isSelected
-                  ? 'bg-cyan-600 text-white font-semibold shadow-xs'
-                  : 'bg-white/80 text-slate-700 hover:text-slate-900 hover:bg-white border border-slate-200/80'
+                  ? 'bg-cyan-500 text-navy-950 font-semibold'
+                  : 'bg-navy-900/80 text-slate-300 hover:text-white hover:bg-navy-850 border border-navy-800'
               }`}
             >
               {Icon && <Icon className="w-3 h-3" />}
@@ -512,8 +512,8 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
                 <span
                   className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
                     isSelected
-                      ? 'bg-white/20 text-white font-bold'
-                      : 'bg-slate-100 text-slate-600'
+                      ? 'bg-navy-950/20 text-navy-950 font-bold'
+                      : 'bg-navy-800 text-slate-400'
                   }`}
                 >
                   {filter.count}
@@ -525,22 +525,22 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
       </div>
 
       {/* 3. Center Map: Maximized Visual Space */}
-      <div className="relative w-full h-[580px] sm:h-[660px] lg:h-[720px] bg-[#f1f5f9] overflow-hidden select-none">
+      <div className="relative w-full h-[580px] sm:h-[660px] lg:h-[720px] bg-[#070C18] overflow-hidden select-none">
         {/* Loading Overlay */}
         {isLoading && (
-          <div className="absolute inset-0 z-30 bg-white/60 backdrop-blur-sm flex flex-col items-center justify-center p-4 gap-2 text-center animate-in fade-in">
-            <div className="w-7 h-7 rounded-full border-2 border-cyan-600/20 border-t-cyan-600 animate-spin" />
-            <span className="text-xs text-slate-700 font-medium">Loading map...</span>
+          <div className="absolute inset-0 z-30 bg-navy-950/60 backdrop-blur-sm flex flex-col items-center justify-center p-4 gap-2 text-center animate-in fade-in">
+            <div className="w-7 h-7 rounded-full border-2 border-cyan-500/20 border-t-cyan-400 animate-spin" />
+            <span className="text-xs text-slate-300 font-medium">Loading map...</span>
           </div>
         )}
 
         {/* Error Notice */}
         {errorMessage && !isLoading && (
-          <div className="absolute top-3 left-3 right-16 z-30 p-2 rounded-xl bg-rose-50/95 border border-rose-200 text-rose-800 text-xs flex items-center justify-between gap-2 shadow-md backdrop-blur-md">
+          <div className="absolute top-3 left-3 right-16 z-30 p-2 rounded-xl bg-rose-950/90 border border-rose-500/40 text-rose-200 text-xs flex items-center justify-between gap-2 shadow-xl backdrop-blur-md">
             <span className="truncate">{errorMessage}</span>
             <button
               onClick={fetchMapLocations}
-              className="px-2 py-0.5 rounded bg-rose-600 hover:bg-rose-500 text-white text-[11px] font-medium flex items-center gap-1 transition-colors flex-shrink-0"
+              className="px-2 py-0.5 rounded bg-rose-900 hover:bg-rose-800 text-white text-[11px] font-medium flex items-center gap-1 transition-colors flex-shrink-0"
             >
               <RefreshCw className="w-3 h-3" />
               Retry
@@ -549,25 +549,25 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
         )}
 
         {/* Compact Vertical Map Controls (Top Right) */}
-        <div className="absolute top-3 right-3 z-[400] flex flex-col gap-1 bg-white/90 backdrop-blur-md p-1 rounded-xl border border-slate-200/90 shadow-md">
+        <div className="absolute top-3 right-3 z-[400] flex flex-col gap-1 bg-navy-900/90 backdrop-blur-md p-1 rounded-xl border border-navy-750/80 shadow-xl">
           <button
             onClick={() => mapInstance?.zoomIn()}
-            className="w-7 h-7 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center transition-colors"
+            className="w-7 h-7 rounded-lg text-slate-300 hover:text-white hover:bg-navy-800 flex items-center justify-center transition-colors"
             title="Zoom In"
           >
             <ZoomIn className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={() => mapInstance?.zoomOut()}
-            className="w-7 h-7 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center transition-colors"
+            className="w-7 h-7 rounded-lg text-slate-300 hover:text-white hover:bg-navy-800 flex items-center justify-center transition-colors"
             title="Zoom Out"
           >
             <ZoomOut className="w-3.5 h-3.5" />
           </button>
-          <div className="h-px bg-slate-200 my-0.5 mx-1" />
+          <div className="h-px bg-navy-750 my-0.5 mx-1" />
           <button
             onClick={handleResetView}
-            className="w-7 h-7 rounded-lg text-slate-700 hover:text-cyan-700 hover:bg-slate-100 flex items-center justify-center transition-colors"
+            className="w-7 h-7 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-navy-800 flex items-center justify-center transition-colors"
             title="Reset View"
           >
             <RotateCcw className="w-3 h-3" />
@@ -636,7 +636,7 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
       </div>
 
       {/* 4. Bottom: Small Category Legend with Coloured Indicators */}
-      <div className="px-4 py-2 bg-white/80 backdrop-blur-md border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-600 gap-3">
+      <div className="px-4 py-2 bg-navy-950/80 border-t border-navy-800/60 flex items-center justify-between text-xs text-slate-400 gap-3">
         <div className="flex items-center gap-3.5 flex-wrap">
           <span className="flex items-center gap-1.5 text-[11px]">
             <span className="w-2 h-2 rounded-full bg-rose-500" /> Hospitals
@@ -645,7 +645,7 @@ export const InteractiveMapArea = ({ destination, destinationName, className }) 
             <span className="w-2 h-2 rounded-full bg-violet-500" /> Embassies
           </span>
           <span className="flex items-center gap-1.5 text-[11px]">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" /> Safe Havens
+            <span className="w-2 h-2 rounded-full bg-emerald-400" /> Safe Havens
           </span>
           <span className="flex items-center gap-1.5 text-[11px]">
             <span className="w-2 h-2 rounded-full bg-amber-500" /> Caution Zones
