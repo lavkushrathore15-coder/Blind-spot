@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  blindspot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - SERPAPI_API_KEY=${SERPAPI_API_KEY:-}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - CLIENT_URL=*
+    restart: unless-stopped
