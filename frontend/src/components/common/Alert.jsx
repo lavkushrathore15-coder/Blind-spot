@@ -13,23 +13,23 @@ export const Alert = ({ type = 'info', title, message, children, className }) =>
   const Icon = icons[type];
 
   const variants = {
-    success: 'bg-emerald-950/40 border-emerald-500/30 text-emerald-200',
-    warning: 'bg-amber-950/40 border-amber-500/30 text-amber-200',
-    danger: 'bg-rose-950/40 border-rose-500/30 text-rose-200',
-    info: 'bg-indigo-950/40 border-indigo-500/30 text-indigo-200',
+    success: 'bg-emerald-50/90 border-emerald-200 text-emerald-900',
+    warning: 'bg-amber-50/90 border-amber-200 text-amber-900',
+    danger: 'bg-rose-50/90 border-rose-200 text-rose-900',
+    info: 'bg-cyan-50/90 border-cyan-200 text-cyan-900',
   };
 
   const iconColors = {
-    success: 'text-emerald-400',
-    warning: 'text-amber-400',
-    danger: 'text-rose-400',
-    info: 'text-indigo-400',
+    success: 'text-emerald-600',
+    warning: 'text-amber-600',
+    danger: 'text-rose-600',
+    info: 'text-cyan-600',
   };
 
   return (
     <div
       className={cn(
-        'flex items-start gap-3 p-4 rounded-xl border text-sm backdrop-blur-sm',
+        'flex items-start gap-3 p-4 rounded-xl border text-sm backdrop-blur-md shadow-sm',
         variants[type],
         className
       )}

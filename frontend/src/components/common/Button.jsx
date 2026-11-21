@@ -11,14 +11,14 @@ export const Button = ({
   icon: Icon,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-xl transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variants = {
-    primary: 'bg-indigo-600 hover:bg-indigo-500 text-white focus:ring-indigo-500 shadow-md shadow-indigo-500/20 active:scale-[0.98]',
-    secondary: 'bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 focus:ring-slate-500',
-    outline: 'border border-indigo-500/40 text-indigo-400 hover:bg-indigo-500/10 focus:ring-indigo-500',
-    danger: 'bg-rose-600 hover:bg-rose-500 text-white focus:ring-rose-500 shadow-md shadow-rose-500/20',
-    ghost: 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/60 focus:ring-slate-500',
+    primary: 'bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white focus:ring-cyan-500 shadow-md shadow-cyan-600/20 active:scale-[0.98]',
+    secondary: 'bg-white/90 hover:bg-white text-slate-700 border border-slate-200/90 shadow-sm hover:border-slate-300 focus:ring-slate-400 active:scale-[0.98]',
+    outline: 'border border-cyan-500/50 text-cyan-700 hover:bg-cyan-50 focus:ring-cyan-500',
+    danger: 'bg-rose-600 hover:bg-rose-500 text-white focus:ring-rose-500 shadow-md shadow-rose-500/20 active:scale-[0.98]',
+    ghost: 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 focus:ring-slate-400',
   };
 
   const sizes = {

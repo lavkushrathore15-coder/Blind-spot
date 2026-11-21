@@ -174,21 +174,21 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
   };
 
   return (
-    <div className={`glass-card rounded-2xl p-6 border border-navy-700/60 space-y-6 ${className || ''}`}>
+    <div className={`glass-card rounded-2xl p-6 border border-slate-200/90 shadow-glass-light space-y-6 ${className || ''}`}>
       {/* Top Header & Overview */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-navy-700/50 gap-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-slate-200/80 gap-4">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+          <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-200 text-cyan-400">
             <MapPin className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="text-base font-bold text-white">Live Emergency & Location Intelligence</h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400 font-semibold">
+              <h3 className="text-base font-bold text-slate-900">Live Emergency & Location Intelligence</h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-50 border border-cyan-200 text-cyan-400 font-semibold">
                 Google Maps Telemetry
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5">
               Verified physical facilities for {destinationName || 'Destination'} (Hospitals, Pharmacies, Police)
             </p>
           </div>
@@ -208,10 +208,10 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
       </div>
 
       {/* Prominent Truth-in-Data Disclaimer */}
-      <div className="p-3.5 rounded-xl bg-navy-900/80 border border-navy-750 text-xs flex items-start gap-2.5 text-slate-300 leading-relaxed">
+      <div className="p-3.5 rounded-xl bg-white/80 border border-slate-200 text-xs flex items-start gap-2.5 text-slate-600 leading-relaxed">
         <Info className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
         <div>
-          <strong className="text-white">Facility Coverage Notice: </strong>
+          <strong className="text-slate-900">Facility Coverage Notice: </strong>
           Retrieved places reflect public Google Maps query results and do not represent every facility in the destination. Names, addresses, ratings, and phone numbers are displayed strictly when returned by the provider. Never invent emergency contacts.
         </div>
       </div>
@@ -234,9 +234,9 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
       {/* Main Grid: Interactive Map (Left) + Synchronized Places List (Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Interactive Map Canvas (7 cols) */}
-        <div className="lg:col-span-7 glass-card rounded-2xl overflow-hidden border border-navy-700/60 flex flex-col">
+        <div className="lg:col-span-7 glass-card rounded-2xl overflow-hidden border border-slate-200/90 shadow-glass-light flex flex-col">
           {/* Map Controls Toolbar */}
-          <div className="p-3 bg-navy-900/90 border-b border-navy-700/60 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="p-3 bg-white/90 border-b border-slate-200/90 flex flex-wrap items-center justify-between gap-2 text-xs">
             {/* Category Filter Pills */}
             <div className="flex items-center gap-1.5 flex-wrap">
               {[
@@ -252,8 +252,8 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 ${
                       isActive
-                        ? 'bg-cyan-500 text-navy-950 font-bold shadow-glow-cyan-sm'
-                        : 'bg-navy-800 text-slate-300 hover:text-white border border-navy-750'
+                        ? 'bg-cyan-500 text-navy-950 font-bold shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:text-white border border-slate-200'
                     }`}
                   >
                     {cat.icon && <cat.icon className="w-3 h-3" />}
@@ -264,31 +264,31 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
             </div>
 
             {/* Canvas Zoom Controls */}
-            <div className="flex items-center gap-1 bg-navy-800/80 p-1 rounded-lg border border-navy-750">
+            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
               <button
                 onClick={() => setZoomLevel((z) => Math.min(z + 0.2, 1.6))}
-                className="p-1 rounded text-slate-300 hover:text-white hover:bg-navy-700"
+                className="p-1 rounded text-slate-600 hover:text-white hover:bg-navy-700"
                 title="Zoom In"
               >
                 <ZoomIn className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setZoomLevel((z) => Math.max(z - 0.2, 0.8))}
-                className="p-1 rounded text-slate-300 hover:text-white hover:bg-navy-700"
+                className="p-1 rounded text-slate-600 hover:text-white hover:bg-navy-700"
                 title="Zoom Out"
               >
                 <ZoomOut className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setZoomLevel(1)}
-                className="p-1 rounded text-slate-300 hover:text-white hover:bg-navy-700"
+                className="p-1 rounded text-slate-600 hover:text-white hover:bg-navy-700"
                 title="Reset View"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setRadarActive(!radarActive)}
-                className={`p-1 rounded ${radarActive ? 'text-cyan-400 bg-cyan-950/60' : 'text-slate-400 hover:text-white'}`}
+                className={`p-1 rounded ${radarActive ? 'text-cyan-400 bg-cyan-50' : 'text-slate-500 hover:text-white'}`}
                 title="Toggle Radar Grid"
               >
                 <Radio className="w-3.5 h-3.5" />
@@ -299,9 +299,9 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
           {/* Interactive Map Visual Area */}
           <div className="relative w-full h-[400px] sm:h-[460px] bg-[#070C18] overflow-hidden select-none">
             {isLoading && (
-              <div className="absolute inset-0 z-40 bg-navy-950/80 backdrop-blur-sm flex flex-col items-center justify-center space-y-3">
+              <div className="absolute inset-0 z-40 bg-slate-50/80 backdrop-blur-sm flex flex-col items-center justify-center space-y-3">
                 <Spinner size="lg" />
-                <p className="text-xs text-cyan-300 font-mono animate-pulse">
+                <p className="text-xs text-cyan-800 font-mono animate-pulse">
                   Querying live Google Maps emergency coordinates...
                 </p>
               </div>
@@ -310,8 +310,8 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
             {/* Radar Lines */}
             {radarActive && (
               <div className="absolute inset-0 pointer-events-none opacity-20">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-cyan-500/20" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full border border-cyan-500/30" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-cyan-200" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full border border-cyan-200" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-cyan-500/10 via-transparent to-transparent animate-radar-sweep origin-center" />
               </div>
             )}
@@ -328,19 +328,19 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
 
             {/* Coordinate Bounds Overlay */}
             {bounds && (
-              <div className="absolute top-3 left-3 z-10 font-mono text-[10px] text-slate-400 bg-navy-950/80 px-2 py-1 rounded border border-navy-800">
+              <div className="absolute top-3 left-3 z-10 font-mono text-[10px] text-slate-500 bg-slate-50/80 px-2 py-1 rounded border border-slate-200">
                 <span>GPS Grid: {bounds.minLat.toFixed(3)}°N to {bounds.maxLat.toFixed(3)}°N</span>
               </div>
             )}
 
             {/* Map Loading Failure / Empty Coordinates Overlay */}
             {!isLoading && placesWithCoords.length === 0 && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-20 bg-navy-950/80 backdrop-blur-xs space-y-2">
-                <div className="p-3 rounded-full bg-navy-900 border border-navy-800 text-slate-500">
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-20 bg-slate-50/80 backdrop-blur-xs space-y-2">
+                <div className="p-3 rounded-full bg-white/85 border border-slate-200 text-slate-500">
                   <MapPin className="w-7 h-7" />
                 </div>
-                <h4 className="text-sm font-semibold text-white">No Map Coordinates Available</h4>
-                <p className="text-xs text-slate-400 max-w-xs leading-relaxed">
+                <h4 className="text-sm font-semibold text-slate-900">No Map Coordinates Available</h4>
+                <p className="text-xs text-slate-500 max-w-xs leading-relaxed">
                   {error
                     ? error
                     : 'The retrieved facility listings for this location do not contain validated GPS coordinates to plot on the canvas.'}
@@ -390,7 +390,7 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
                     </div>
 
                     {/* Tooltip on hover */}
-                    <div className="absolute bottom-7 left-1/2 -translate-x-1/2 hidden group-hover:block whitespace-nowrap bg-navy-950/95 text-white text-[11px] font-medium py-1 px-2.5 rounded-md border border-navy-700 shadow-2xl pointer-events-none z-30">
+                    <div className="absolute bottom-7 left-1/2 -translate-x-1/2 hidden group-hover:block whitespace-nowrap bg-slate-50/95 text-white text-[11px] font-medium py-1 px-2.5 rounded-md border border-slate-200 shadow-2xl pointer-events-none z-30">
                       <span>{place.title}</span>
                       {place.rating !== null && (
                         <span className="text-amber-300 font-mono ml-1.5">★ {place.rating}</span>
@@ -403,8 +403,8 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
 
             {/* Floating Active Place Detail Card */}
             {activePlace && (
-              <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:w-80 z-30 bg-navy-950/95 border border-cyan-500/50 rounded-xl p-4 shadow-2xl backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-200 text-xs space-y-2">
-                <div className="flex items-start justify-between gap-2 pb-1.5 border-b border-navy-800">
+              <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:w-80 z-30 bg-slate-50/95 border border-cyan-500/50 rounded-xl p-4 shadow-2xl backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-200 text-xs space-y-2">
+                <div className="flex items-start justify-between gap-2 pb-1.5 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
                     <span className={`w-2 h-2 rounded-full ${getCategoryTheme(activePlace.category).ringColor}`} />
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400">
@@ -419,11 +419,11 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
                   )}
                 </div>
 
-                <h4 className="text-sm font-bold text-white leading-snug">{activePlace.title}</h4>
+                <h4 className="text-sm font-bold text-slate-900 leading-snug">{activePlace.title}</h4>
 
-                <div className="space-y-1 text-[11px] text-slate-300">
+                <div className="space-y-1 text-[11px] text-slate-600">
                   {activePlace.address ? (
-                    <div className="flex items-start gap-1.5 text-slate-400">
+                    <div className="flex items-start gap-1.5 text-slate-500">
                       <MapPin className="w-3 h-3 text-slate-500 flex-shrink-0 mt-0.5" />
                       <span className="line-clamp-2">{activePlace.address}</span>
                     </div>
@@ -446,11 +446,11 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
                 </div>
 
                 {activePlace.phone && (
-                  <div className="pt-2 border-t border-navy-800/80 flex items-center justify-between">
-                    <span className="font-mono text-cyan-300 font-semibold">{activePlace.phone}</span>
+                  <div className="pt-2 border-t border-slate-200/80 flex items-center justify-between">
+                    <span className="font-mono text-cyan-800 font-semibold">{activePlace.phone}</span>
                     <button
                       onClick={(e) => copyPhone(activePlace.id, activePlace.phone, e)}
-                      className="px-2 py-0.5 rounded bg-navy-800 hover:bg-navy-750 text-slate-200 text-[10px] flex items-center gap-1"
+                      className="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-200 text-[10px] flex items-center gap-1"
                     >
                       {copiedPhoneId === activePlace.id ? (
                         <Check className="w-3 h-3 text-emerald-400" />
@@ -466,7 +466,7 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
           </div>
 
           {/* Map Footer Bar */}
-          <div className="px-4 py-2 bg-navy-900/90 border-t border-navy-700/60 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
+          <div className="px-4 py-2 bg-white/90 border-t border-slate-200/90 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-2">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5 text-rose-300">
                 <span className="w-2.5 h-2.5 rounded-full bg-rose-500" /> Hospitals
@@ -474,7 +474,7 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
               <span className="flex items-center gap-1.5 text-emerald-300">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" /> Pharmacies
               </span>
-              <span className="flex items-center gap-1.5 text-cyan-300">
+              <span className="flex items-center gap-1.5 text-cyan-800">
                 <span className="w-2.5 h-2.5 rounded-full bg-cyan-500" /> Police
               </span>
             </div>
@@ -488,13 +488,13 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
         <div className="lg:col-span-5 space-y-4">
           {/* Search Input for List */}
           <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Filter retrieved places by name or address..."
               value={searchFilter}
               onChange={(e) => setSearchFilter(e.target.value)}
-              className="w-full bg-navy-900 border border-navy-750 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+              className="w-full bg-white/85 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
             />
           </div>
 
@@ -512,8 +512,8 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
                   onClick={() => setSelectedPlaceId(place.id)}
                   className={`p-4 rounded-xl border transition-all cursor-pointer space-y-2 text-xs ${
                     isSelected
-                      ? 'bg-navy-850 border-cyan-500/70 shadow-glow-cyan-sm'
-                      : 'bg-navy-900/70 border-navy-800 hover:border-navy-700 hover:bg-navy-850/60'
+                      ? 'bg-slate-50 border-cyan-500/70 shadow-xs'
+                      : 'bg-white/70 border-slate-200 hover:border-slate-200 hover:bg-slate-50/60'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">
@@ -522,8 +522,8 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
                         <Icon className="w-3.5 h-3.5 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-white text-sm leading-snug">{place.title}</h4>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                        <h4 className="font-bold text-slate-900 text-sm leading-snug">{place.title}</h4>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
                           {theme.label}
                         </span>
                       </div>
@@ -542,7 +542,7 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
 
                   {/* Address */}
                   {place.address ? (
-                    <div className="text-slate-300 flex items-start gap-1.5">
+                    <div className="text-slate-600 flex items-start gap-1.5">
                       <MapPin className="w-3.5 h-3.5 text-slate-500 flex-shrink-0 mt-0.5" />
                       <span className="line-clamp-2 leading-relaxed">{place.address}</span>
                     </div>
@@ -559,7 +559,7 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
                       </span>
                     )}
                     {place.hasValidCoordinates ? (
-                      <span className="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-1.5 py-0.5 rounded border border-cyan-500/20">
+                      <span className="text-[10px] font-mono text-cyan-400 bg-cyan-50 px-1.5 py-0.5 rounded border border-cyan-200">
                         ✓ Verified GPS
                       </span>
                     ) : (
@@ -568,16 +568,16 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
                   </div>
 
                   {/* Phone Bar */}
-                  <div className="pt-2 border-t border-navy-800/80 flex items-center justify-between text-xs">
+                  <div className="pt-2 border-t border-slate-200/80 flex items-center justify-between text-xs">
                     {place.phone ? (
                       <>
-                        <div className="flex items-center gap-1.5 text-cyan-300 font-mono font-semibold">
+                        <div className="flex items-center gap-1.5 text-cyan-800 font-mono font-semibold">
                           <Phone className="w-3 h-3 text-cyan-400" />
                           <span>{place.phone}</span>
                         </div>
                         <button
                           onClick={(e) => copyPhone(place.id, place.phone, e)}
-                          className="px-2 py-0.5 rounded bg-navy-800 hover:bg-navy-750 text-slate-300 hover:text-white flex items-center gap-1 text-[11px] transition-colors"
+                          className="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-white flex items-center gap-1 text-[11px] transition-colors"
                         >
                           {copiedPhoneId === place.id ? (
                             <>
@@ -601,9 +601,9 @@ export const EmergencyLocationIntelligence = ({ destinationName, className }) =>
             })}
 
             {filteredPlaces.length === 0 && !isLoading && (
-              <div className="glass-card rounded-xl p-8 text-center text-xs text-slate-400 space-y-2 border border-navy-700/60">
+              <div className="glass-card rounded-xl p-8 text-center text-xs text-slate-500 space-y-2 border border-slate-200/90 shadow-glass-light">
                 <AlertTriangle className="w-6 h-6 text-amber-400 mx-auto" />
-                <h5 className="font-bold text-white">No Matching Places Found</h5>
+                <h5 className="font-bold text-slate-900">No Matching Places Found</h5>
                 <p>
                   No facilities matched the current category or search filter in {destinationName}. Try resetting the search or category filters.
                 </p>

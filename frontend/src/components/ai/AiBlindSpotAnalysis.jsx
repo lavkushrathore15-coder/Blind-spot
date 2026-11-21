@@ -23,19 +23,19 @@ const CLAIM_TYPE_CONFIG = {
   confirmed_fact: {
     label: 'Confirmed Fact',
     variant: 'success',
-    badgeClass: 'bg-emerald-950/80 border-emerald-500/40 text-emerald-300',
+    badgeClass: 'bg-emerald-50/80 border-emerald-500/40 text-emerald-300',
     desc: 'Validated by official diplomatic, municipal, or verified registry sources.',
   },
   reported_event: {
     label: 'Reported Event',
     variant: 'info',
-    badgeClass: 'bg-indigo-950/80 border-indigo-500/40 text-indigo-300',
+    badgeClass: 'bg-indigo-50/80 border-indigo-200 text-indigo-800',
     desc: 'Reported by news media outlets; subject to ongoing editorial updates.',
   },
   unverified_claim: {
     label: 'Unverified Claim',
     variant: 'warning',
-    badgeClass: 'bg-amber-950/80 border-amber-500/40 text-amber-300',
+    badgeClass: 'bg-amber-50/80 border-amber-500/40 text-amber-300',
     desc: 'Community or uncorroborated report; not yet officially substantiated.',
   },
 };
@@ -109,24 +109,24 @@ export const AiBlindSpotAnalysis = ({
 
   return (
     <div
-      className={`glass-card rounded-2xl p-6 border border-navy-700/60 flex flex-col ${className}`}
+      className={`glass-card rounded-2xl p-6 border border-slate-200/90 shadow-glass-light flex flex-col ${className}`}
     >
       {/* Card Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-navy-700/50 gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200/80 gap-3">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400">
+          <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-200 text-indigo-400">
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-base font-bold text-white tracking-tight">
+              <h3 className="text-base font-bold text-slate-900 tracking-tight">
                 AI BlindSpot Discoveries
               </h3>
               <Badge variant="cyan" className="font-mono text-[10px]">
                 Zero-Hallucination Grounded
               </Badge>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               Multilateral synthesis anchored strictly to verified evidence sources
             </p>
           </div>
@@ -159,18 +159,18 @@ export const AiBlindSpotAnalysis = ({
       </div>
 
       {/* Safety & Anti-Hallucination Telemetry Bar */}
-      <div className="my-3.5 p-3 rounded-xl bg-navy-950/70 border border-cyan-500/20 flex flex-wrap items-center justify-between gap-2 text-xs">
-        <div className="flex items-center gap-2 text-slate-300">
+      <div className="my-3.5 p-3 rounded-xl bg-slate-50/80 border border-cyan-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+        <div className="flex items-center gap-2 text-slate-600">
           <ShieldCheck className="w-4 h-4 text-cyan-400 flex-shrink-0" />
           <span>
             Telemetry Anchor:{' '}
-            <strong className="text-white">
+            <strong className="text-slate-900">
               {totalEvidenceIngested} verified source items ingested
             </strong>
           </span>
         </div>
 
-        <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
+        <div className="flex items-center gap-3 text-[11px] font-mono text-slate-500">
           <span className="flex items-center gap-1 text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             100% Citation Grounded
@@ -190,7 +190,7 @@ export const AiBlindSpotAnalysis = ({
 
       {/* Error Banner */}
       {error && (
-        <div className="mb-4 p-3 rounded-xl bg-rose-950/30 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-2">
+        <div className="mb-4 p-3 rounded-xl bg-rose-50/30 border border-rose-200 text-rose-300 text-xs flex items-center gap-2">
           <AlertTriangle className="w-4 h-4 text-rose-400 flex-shrink-0" />
           <span>{error}</span>
         </div>
@@ -201,21 +201,21 @@ export const AiBlindSpotAnalysis = ({
         {isLoading ? (
           <div className="py-16 text-center space-y-3">
             <RefreshCw className="w-8 h-8 text-cyan-400 animate-spin mx-auto" />
-            <h4 className="text-sm font-semibold text-white">
+            <h4 className="text-sm font-semibold text-slate-900">
               Running AI BlindSpot Grounding Engine...
             </h4>
-            <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            <p className="text-xs text-slate-500 max-w-sm mx-auto">
               Ingesting SerpApi travel feeds, Google Maps emergency registries, and verifying factual citations.
             </p>
           </div>
         ) : findings.length === 0 ? (
           /* Explicit Insufficient Evidence Message */
-          <div className="py-12 px-6 rounded-xl bg-navy-950/50 border border-dashed border-navy-700 text-center space-y-3">
+          <div className="py-12 px-6 rounded-xl bg-slate-50/80 border border-dashed border-slate-200 text-center space-y-3">
             <FileQuestion className="w-10 h-10 text-slate-500 mx-auto" />
-            <h4 className="text-sm font-bold text-white">
+            <h4 className="text-sm font-bold text-slate-900">
               Insufficient Validated Evidence for AI Synthesis
             </h4>
-            <p className="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
+            <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
               In accordance with BlindSpot's strict anti-hallucination protocols, no assumptions or ungrounded claims are generated without verified evidence. Ingest additional search feeds or emergency locations to enable synthesis.
             </p>
             <Button
@@ -235,12 +235,12 @@ export const AiBlindSpotAnalysis = ({
             return (
               <div
                 key={item.id}
-                className="p-4 rounded-xl bg-navy-900/60 border border-navy-800 hover:border-navy-700 transition-all space-y-3"
+                className="p-4 rounded-xl bg-white/70 border border-slate-200 hover:border-slate-200 transition-all space-y-3"
               >
                 {/* Header row with badges */}
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[11px] font-semibold text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-2 py-0.5 rounded">
+                    <span className="text-[11px] font-semibold text-cyan-400 bg-cyan-50/70 border border-cyan-200 px-2 py-0.5 rounded">
                       {CATEGORY_NAMES[item.category] || item.category}
                     </span>
 
@@ -254,20 +254,20 @@ export const AiBlindSpotAnalysis = ({
 
                     {/* Outdated / Undated Evidence Warnings */}
                     {item.isOutdatedEvidence && (
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/60 border border-amber-500/40 text-amber-300 flex items-center gap-1">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 border border-amber-500/40 text-amber-300 flex items-center gap-1">
                         <Clock className="w-3 h-3 text-amber-400" />
                         Outdated Source (&gt;180d)
                       </span>
                     )}
                     {item.isUndatedEvidence && (
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-400 flex items-center gap-1">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-300 text-slate-500 flex items-center gap-1">
                         Undated Source
                       </span>
                     )}
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-mono text-slate-400">
+                    <span className="text-[11px] font-mono text-slate-500">
                       Confidence:{' '}
                       <span className="text-cyan-400 font-semibold">
                         {item.confidenceScore}%
@@ -293,21 +293,21 @@ export const AiBlindSpotAnalysis = ({
 
                 {/* Finding Title & Grounded Body */}
                 <div>
-                  <h4 className="text-sm font-bold text-white mb-1.5 flex items-center gap-2">
+                  <h4 className="text-sm font-bold text-slate-900 mb-1.5 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
                     {item.title}
                   </h4>
-                  <p className="text-xs text-slate-300 leading-relaxed pl-3.5 border-l-2 border-navy-700">
+                  <p className="text-xs text-slate-600 leading-relaxed pl-3.5 border-l-2 border-slate-200">
                     {item.finding}
                   </p>
                 </div>
 
                 {/* Actionable Mitigation Box */}
                 {item.actionableMitigation && (
-                  <div className="p-3 rounded-lg bg-navy-950/90 border border-cyan-500/20 flex items-start gap-2.5 text-xs text-cyan-200">
+                  <div className="p-3 rounded-lg bg-slate-50/90 border border-cyan-200 flex items-start gap-2.5 text-xs text-cyan-200">
                     <ShieldCheck className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-semibold text-cyan-300">
+                      <span className="font-semibold text-cyan-800">
                         Actionable Mitigation:{' '}
                       </span>
                       <span>{item.actionableMitigation}</span>
@@ -316,9 +316,9 @@ export const AiBlindSpotAnalysis = ({
                 )}
 
                 {/* Verified Source Citations Pill Row */}
-                <div className="pt-2 border-t border-navy-800/80 flex flex-wrap items-center justify-between gap-2 text-xs">
+                <div className="pt-2 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs">
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[11px] font-mono text-slate-400">
+                    <span className="text-[11px] font-mono text-slate-500">
                       Verified Citations:
                     </span>
                     {Array.isArray(item.sourceIds) && item.sourceIds.length > 0 ? (
@@ -326,7 +326,7 @@ export const AiBlindSpotAnalysis = ({
                         <button
                           key={sid}
                           onClick={() => handleOpenExplorerWithSource(sid)}
-                          className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/30 text-cyan-300 hover:text-cyan-200 transition-colors flex items-center gap-1"
+                          className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-50/80 hover:bg-cyan-900 border border-cyan-200 text-cyan-800 hover:text-cyan-200 transition-colors flex items-center gap-1"
                           title={`Click to inspect evidence record ${sid} in Evidence Explorer`}
                         >
                           <span>{sid}</span>
@@ -349,7 +349,7 @@ export const AiBlindSpotAnalysis = ({
                         setIsExplorerOpen(true);
                       }
                     }}
-                    className="text-[11px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-mono transition-colors"
+                    className="text-[11px] text-cyan-400 hover:text-cyan-800 flex items-center gap-1 font-mono transition-colors"
                   >
                     <span>Inspect Provenance</span>
                     <span>→</span>

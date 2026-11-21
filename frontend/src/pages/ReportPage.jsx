@@ -289,14 +289,14 @@ export const ReportPage = () => {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 print:p-0 print:space-y-6">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-cyan-950 border border-cyan-400 text-cyan-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold animate-in fade-in no-print">
+        <div className="fixed bottom-6 right-6 z-50 bg-cyan-50 border border-cyan-400 text-cyan-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold animate-in fade-in no-print">
           <Check className="w-4 h-4 text-cyan-400" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Top Header & Print Navigation Bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-navy-800 no-print">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 no-print">
         <Button
           variant="ghost"
           size="sm"
@@ -328,7 +328,7 @@ export const ReportPage = () => {
       </div>
 
       {/* Persona Personalization Switcher */}
-      <div className="p-4 rounded-2xl bg-navy-900/90 border border-cyan-500/30 space-y-3 no-print">
+      <div className="p-4 rounded-2xl bg-white/90 border border-cyan-200 space-y-3 no-print">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider font-mono">
             <Users className="w-4 h-4 text-cyan-400" />
@@ -352,15 +352,15 @@ export const ReportPage = () => {
                 onClick={() => setSelectedPersona(p.key)}
                 className={`p-3 rounded-xl border text-left transition-all ${
                   isSelected
-                    ? 'bg-cyan-950/80 border-cyan-400 ring-1 ring-cyan-500/40 text-white'
-                    : 'bg-navy-950/60 border-navy-800 text-slate-300 hover:border-navy-700 hover:text-white'
+                    ? 'bg-cyan-50/80 border-cyan-400 ring-1 ring-cyan-500/40 text-white'
+                    : 'bg-slate-50/80 border-slate-200 text-slate-600 hover:border-slate-200 hover:text-white'
                 }`}
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <Icon className={`w-4 h-4 ${isSelected ? 'text-cyan-400' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 ${isSelected ? 'text-cyan-400' : 'text-slate-500'}`} />
                   <span className="font-semibold text-xs">{p.label}</span>
                 </div>
-                <p className="text-[10px] text-slate-400 line-clamp-1">{p.desc}</p>
+                <p className="text-[10px] text-slate-500 line-clamp-1">{p.desc}</p>
               </button>
             );
           })}
@@ -368,41 +368,41 @@ export const ReportPage = () => {
       </div>
 
       {/* Main Dossier Container */}
-      <div className="glass-card rounded-2xl p-6 sm:p-8 border border-navy-700/60 space-y-8 print:border-none print:p-0 print:space-y-6">
+      <div className="glass-card rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-glass-light space-y-8 print:border-none print:p-0 print:space-y-6">
         {/* ==========================================
             SECTION 1: DESTINATION OVERVIEW
            ========================================== */}
-        <section className="space-y-6 pb-6 border-b border-navy-800 print:pb-4">
+        <section className="space-y-6 pb-6 border-b border-slate-200 print:pb-4">
           {/* Header Row */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-navy-700/50">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-200/80">
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold block mb-1">
                 BlindSpot Tactical Dossier // Comprehensive Intelligence Report
               </span>
               <div className="flex items-center gap-3">
                 <span className="text-4xl">{activeReport.flag}</span>
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                   {destinationName}
                 </h1>
               </div>
-              <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                Personalized Profile: <strong className="text-white">{activeReport.travellerType}</strong> • Travel Window:{' '}
-                <span className="font-mono text-cyan-300">
+              <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                Personalized Profile: <strong className="text-slate-900">{activeReport.travellerType}</strong> • Travel Window:{' '}
+                <span className="font-mono text-cyan-800">
                   {sections.destinationOverview.travelDates?.start} to {sections.destinationOverview.travelDates?.end} ({sections.destinationOverview.travelDates?.days} Days)
                 </span>
               </p>
             </div>
 
             {/* Awareness Index Badge */}
-            <div className="flex flex-col items-start sm:items-end gap-1.5 p-3.5 rounded-xl bg-navy-950 border border-cyan-500/30">
-              <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400">
+            <div className="flex flex-col items-start sm:items-end gap-1.5 p-3.5 rounded-xl bg-slate-50 border border-cyan-200">
+              <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">
                 Investigation Coverage Score
               </span>
               <div className="flex items-baseline gap-2">
                 <span className="text-2xl font-extrabold font-mono text-cyan-400">
                   {awarenessIndex.overall}/100
                 </span>
-                <span className="text-xs font-mono font-bold text-white px-2 py-0.5 rounded bg-navy-800 border border-navy-700">
+                <span className="text-xs font-mono font-bold text-white px-2 py-0.5 rounded bg-slate-100 border border-slate-200">
                   {awarenessIndex.grade}
                 </span>
               </div>
@@ -413,15 +413,15 @@ export const ReportPage = () => {
           </div>
 
           {/* Strict Non-Safety Disclaimer Banner */}
-          <div className="p-3.5 rounded-xl bg-navy-950/90 border border-cyan-500/30 flex items-start gap-2.5 text-xs text-slate-300">
+          <div className="p-3.5 rounded-xl bg-slate-50/90 border border-cyan-200 flex items-start gap-2.5 text-xs text-slate-600">
             <Info className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <strong className="text-white font-mono uppercase text-[11px] block">
+              <strong className="text-slate-900 font-mono uppercase text-[11px] block">
                 Truth-in-Data Principle:
               </strong>
               <p className="leading-relaxed">
                 The BlindSpot Awareness Index measures <strong>investigation coverage</strong> (the breadth, freshness, and verified volume of telemetry ingested).{' '}
-                <strong className="text-cyan-300">
+                <strong className="text-cyan-800">
                   It does NOT evaluate or indicate the objective safety of the destination.
                 </strong>{' '}
                 Never label a destination safe or unsafe based on this index.
@@ -432,25 +432,25 @@ export const ReportPage = () => {
           {/* Quick Facts Grid */}
           {activeReport.quickFacts && (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-navy-900/60 border border-navy-800">
-                <span className="text-slate-400 text-[10px] uppercase font-mono block">Universal Emergency</span>
+              <div className="p-3 rounded-xl bg-white/70 border border-slate-200">
+                <span className="text-slate-500 text-[10px] uppercase font-mono block">Universal Emergency</span>
                 <strong className="text-rose-400 font-mono text-sm">{activeReport.quickFacts.emergencyDial || '123 / 911'}</strong>
               </div>
-              <div className="p-3 rounded-xl bg-navy-900/60 border border-navy-800">
-                <span className="text-slate-400 text-[10px] uppercase font-mono block">Local Currency</span>
-                <strong className="text-white font-mono">{activeReport.quickFacts.currency || 'Local Currency'}</strong>
+              <div className="p-3 rounded-xl bg-white/70 border border-slate-200">
+                <span className="text-slate-500 text-[10px] uppercase font-mono block">Local Currency</span>
+                <strong className="text-slate-900 font-mono">{activeReport.quickFacts.currency || 'Local Currency'}</strong>
               </div>
-              <div className="p-3 rounded-xl bg-navy-900/60 border border-navy-800">
-                <span className="text-slate-400 text-[10px] uppercase font-mono block">Primary Language</span>
-                <strong className="text-white">{activeReport.quickFacts.language || 'Local'}</strong>
+              <div className="p-3 rounded-xl bg-white/70 border border-slate-200">
+                <span className="text-slate-500 text-[10px] uppercase font-mono block">Primary Language</span>
+                <strong className="text-slate-900">{activeReport.quickFacts.language || 'Local'}</strong>
               </div>
-              <div className="p-3 rounded-xl bg-navy-900/60 border border-navy-800">
-                <span className="text-slate-400 text-[10px] uppercase font-mono block">Electrical Plugs</span>
-                <strong className="text-white">{activeReport.quickFacts.plugs || 'Standard'}</strong>
+              <div className="p-3 rounded-xl bg-white/70 border border-slate-200">
+                <span className="text-slate-500 text-[10px] uppercase font-mono block">Electrical Plugs</span>
+                <strong className="text-slate-900">{activeReport.quickFacts.plugs || 'Standard'}</strong>
               </div>
-              <div className="p-3 rounded-xl bg-navy-900/60 border border-navy-800">
-                <span className="text-slate-400 text-[10px] uppercase font-mono block">Tap Water Safe?</span>
-                <strong className="text-cyan-300">{activeReport.quickFacts.tapWater || 'Verify bottled'}</strong>
+              <div className="p-3 rounded-xl bg-white/70 border border-slate-200">
+                <span className="text-slate-500 text-[10px] uppercase font-mono block">Tap Water Safe?</span>
+                <strong className="text-cyan-800">{activeReport.quickFacts.tapWater || 'Verify bottled'}</strong>
               </div>
             </div>
           )}
@@ -460,32 +460,32 @@ export const ReportPage = () => {
             SECTION 2: IMPORTANT FINDINGS
            ========================================== */}
         <section className="space-y-4 pt-2">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-navy-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
             <h2 className="text-sm font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
               <Sparkles className="w-4 h-4" /> 2. Important Findings & Personalised Priorities
             </h2>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className="text-[11px] font-mono text-slate-500">
               Sorted by severity & {activeReport.travellerType} relevance
             </span>
           </div>
 
           <div className="space-y-3.5">
             {sections.importantFindings?.length === 0 ? (
-              <p className="text-xs text-slate-400 italic">No validated findings generated.</p>
+              <p className="text-xs text-slate-500 italic">No validated findings generated.</p>
             ) : (
               sections.importantFindings.map((item) => (
                 <div
                   key={item.id}
                   className={`p-4 rounded-xl border transition-all space-y-3 ${
                     item.isPersonaPriority
-                      ? 'bg-navy-900/90 border-cyan-500/40 ring-1 ring-cyan-500/20'
-                      : 'bg-navy-900/60 border-navy-800'
+                      ? 'bg-white/90 border-cyan-200 ring-1 ring-cyan-500/20'
+                      : 'bg-white/70 border-slate-200'
                   }`}
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                      <h3 className="text-sm font-bold text-white">{item.title}</h3>
+                      <h3 className="text-sm font-bold text-slate-900">{item.title}</h3>
 
                       {item.isPersonaPriority && (
                         <Badge variant="cyan" className="text-[10px]">
@@ -512,7 +512,7 @@ export const ReportPage = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-mono text-slate-400">
+                      <span className="text-[11px] font-mono text-slate-500">
                         Confidence: <strong className="text-cyan-400">{item.confidenceScore || item.confidence}%</strong>
                       </span>
                       <Badge
@@ -531,21 +531,21 @@ export const ReportPage = () => {
                   </div>
 
                   {item.personaRelevanceNote && (
-                    <p className="text-[11px] font-mono text-cyan-300/90 pl-3 border-l-2 border-cyan-500/40">
+                    <p className="text-[11px] font-mono text-cyan-800/90 pl-3 border-l-2 border-cyan-200">
                       {item.personaRelevanceNote}
                     </p>
                   )}
 
-                  <p className="text-xs text-slate-300 leading-relaxed pl-3 border-l-2 border-navy-700">
+                  <p className="text-xs text-slate-600 leading-relaxed pl-3 border-l-2 border-slate-200">
                     {item.finding}
                   </p>
 
                   {/* Mitigation */}
                   {item.actionableMitigation && (
-                    <div className="p-3 rounded-lg bg-navy-950/80 border border-cyan-500/20 flex items-start gap-2 text-xs text-cyan-200">
+                    <div className="p-3 rounded-lg bg-slate-50/80 border border-cyan-200 flex items-start gap-2 text-xs text-cyan-200">
                       <ShieldCheck className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <strong className="text-cyan-300">Actionable Mitigation: </strong>
+                        <strong className="text-cyan-800">Actionable Mitigation: </strong>
                         <span>{item.actionableMitigation}</span>
                       </div>
                     </div>
@@ -553,12 +553,12 @@ export const ReportPage = () => {
 
                   {/* Grounded Citation References */}
                   {item.sourceIds && item.sourceIds.length > 0 && (
-                    <div className="flex items-center gap-1.5 flex-wrap pt-1 text-[11px] font-mono text-slate-400">
+                    <div className="flex items-center gap-1.5 flex-wrap pt-1 text-[11px] font-mono text-slate-500">
                       <span>Ground-Truth Source IDs:</span>
                       {item.sourceIds.map((sid) => (
                         <span
                           key={sid}
-                          className="px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/30 text-cyan-300"
+                          className="px-2 py-0.5 rounded bg-cyan-50/70 border border-cyan-200 text-cyan-800"
                         >
                           {sid}
                         </span>
@@ -575,11 +575,11 @@ export const ReportPage = () => {
             SECTION 3: POTENTIAL BLINDSPOTS
            ========================================== */}
         <section className="space-y-4 pt-2">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-navy-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
             <h2 className="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4" /> 3. Potential Blindspots & Intelligence Gaps
             </h2>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className="text-[11px] font-mono text-slate-500">
               Absence of evidence is not evidence of absence
             </span>
           </div>
@@ -588,10 +588,10 @@ export const ReportPage = () => {
             {sections.potentialBlindspots?.map((blindspot) => (
               <div
                 key={blindspot.id}
-                className="p-4 rounded-xl bg-navy-900/60 border border-amber-500/30 space-y-2.5 text-xs"
+                className="p-4 rounded-xl bg-white/70 border border-amber-200 space-y-2.5 text-xs"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-bold text-white text-sm flex items-center gap-2">
+                  <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                     {blindspot.title}
                   </h3>
@@ -600,9 +600,9 @@ export const ReportPage = () => {
                   </Badge>
                 </div>
 
-                <p className="text-slate-300 leading-relaxed">{blindspot.description}</p>
+                <p className="text-slate-600 leading-relaxed">{blindspot.description}</p>
 
-                <div className="p-2.5 rounded-lg bg-navy-950/80 border border-navy-800 flex items-start gap-2 text-slate-300">
+                <div className="p-2.5 rounded-lg bg-slate-50/80 border border-slate-200 flex items-start gap-2 text-slate-600">
                   <span className="text-cyan-400 font-semibold font-mono text-[11px] flex-shrink-0">
                     Guidance:
                   </span>
@@ -617,7 +617,7 @@ export const ReportPage = () => {
             SECTION 4: EMERGENCY FACILITIES
            ========================================== */}
         <section className="space-y-4 pt-2">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-navy-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
             <h2 className="text-sm font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
               <Building className="w-4 h-4" /> 4. Verified Emergency Facilities (Google Maps Grid)
             </h2>
@@ -630,8 +630,8 @@ export const ReportPage = () => {
                   onClick={() => setFacilityCategoryFilter(cat)}
                   className={`px-2.5 py-1 rounded-lg text-xs capitalize transition-colors ${
                     facilityCategoryFilter === cat
-                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-                      : 'bg-navy-800 text-slate-400 hover:text-white'
+                      ? 'bg-cyan-500/20 text-cyan-800 border border-cyan-200'
+                      : 'bg-slate-100 text-slate-500 hover:text-white'
                   }`}
                 >
                   {cat}
@@ -640,7 +640,7 @@ export const ReportPage = () => {
             </div>
           </div>
 
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-slate-500 leading-relaxed">
             {sections.emergencyFacilities?.disclaimer}
           </p>
 
@@ -653,10 +653,10 @@ export const ReportPage = () => {
               facilitiesList.map((fac, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl bg-navy-900/60 border border-navy-800 space-y-2 text-xs"
+                  className="p-3.5 rounded-xl bg-white/70 border border-slate-200 space-y-2 text-xs"
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <strong className="text-white text-sm">{fac.title || fac.name}</strong>
+                    <strong className="text-slate-900 text-sm">{fac.title || fac.name}</strong>
                     <Badge
                       variant={
                         fac.category === 'hospital' || fac.type === 'Hospital'
@@ -671,20 +671,20 @@ export const ReportPage = () => {
                     </Badge>
                   </div>
 
-                  <p className="text-slate-300 flex items-start gap-1.5">
+                  <p className="text-slate-600 flex items-start gap-1.5">
                     <MapPin className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" />
                     <span>{fac.address || 'Address on municipal record'}</span>
                   </p>
 
                   {fac.phone && (
-                    <p className="text-cyan-300 font-mono flex items-center gap-1.5">
+                    <p className="text-cyan-800 font-mono flex items-center gap-1.5">
                       <Phone className="w-3 h-3 text-cyan-400" />
                       <span>{fac.phone}</span>
                     </p>
                   )}
 
                   {fac.rating && (
-                    <div className="flex items-center gap-2 text-[11px] font-mono text-slate-400 pt-1 border-t border-navy-800">
+                    <div className="flex items-center gap-2 text-[11px] font-mono text-slate-500 pt-1 border-t border-slate-200">
                       <span>Rating: <strong className="text-amber-400">{fac.rating} ★</strong></span>
                       {fac.reviewsCount && <span>({fac.reviewsCount} reviews)</span>}
                     </div>
@@ -699,12 +699,12 @@ export const ReportPage = () => {
             SECTION 5: EVIDENCE AND SOURCE LINKS
            ========================================== */}
         <section className="space-y-4 pt-2">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-navy-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
             <div>
               <h2 className="text-sm font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
                 <FileText className="w-4 h-4" /> 5. Evidence & Source Provenance Catalog
               </h2>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500">
                 Expandable cards revealing ground-truth text, original source URLs, and publication timestamps
               </p>
             </div>
@@ -717,20 +717,20 @@ export const ReportPage = () => {
           {/* Search & Category Filter Controls */}
           <div className="flex flex-col sm:flex-row gap-2.5 no-print">
             <div className="relative flex-1">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
               <input
                 type="text"
                 value={evidenceSearch}
                 onChange={(e) => setEvidenceSearch(e.target.value)}
                 placeholder="Filter evidence by title, snippet, or URL..."
-                className="w-full pl-9 pr-3 py-1.5 text-xs bg-navy-950 border border-navy-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
               />
             </div>
 
             <select
               value={evidenceFilter}
               onChange={(e) => setEvidenceFilter(e.target.value)}
-              className="px-3 py-1.5 text-xs bg-navy-950 border border-navy-700 rounded-xl text-slate-200 focus:outline-none focus:border-cyan-400"
+              className="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-200 focus:outline-none focus:border-cyan-400"
             >
               <option value="all">All Dimensions</option>
               <option value="travel_advisories">Official Advisories</option>
@@ -760,17 +760,17 @@ export const ReportPage = () => {
             SECTION 6: MISSING INFORMATION
            ========================================== */}
         <section className="space-y-4 pt-2">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-navy-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
             <h2 className="text-sm font-bold uppercase tracking-wider text-rose-400 flex items-center gap-2">
               <HelpCircle className="w-4 h-4" /> 6. Missing Information & Unverified Telemetry
             </h2>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className="text-[11px] font-mono text-slate-500">
               Forgotten Checklist Gap Analysis
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-navy-900/60 border border-rose-500/30 space-y-3 text-xs">
-            <p className="text-slate-300 leading-relaxed">
+          <div className="p-4 rounded-xl bg-white/70 border border-rose-200 space-y-3 text-xs">
+            <p className="text-slate-600 leading-relaxed">
               The following categories and intelligence areas lack sufficient verified evidence in current search feeds. Travellers are advised not to extrapolate or assume safety in these blindspots:
             </p>
 
@@ -791,8 +791,8 @@ export const ReportPage = () => {
             </div>
 
             {sections.missingInformation?.uninvestigatedCategories?.length > 0 && (
-              <div className="pt-2 border-t border-navy-800 flex items-center gap-2 flex-wrap">
-                <span className="text-slate-400 text-[11px]">Uninvestigated Dimensions:</span>
+              <div className="pt-2 border-t border-slate-200 flex items-center gap-2 flex-wrap">
+                <span className="text-slate-500 text-[11px]">Uninvestigated Dimensions:</span>
                 {sections.missingInformation.uninvestigatedCategories.map((c) => (
                   <Badge key={c.category} variant="danger" className="text-[10px]">
                     {c.displayName || c.category}
@@ -807,11 +807,11 @@ export const ReportPage = () => {
             SECTION 7: RECOMMENDED NEXT CHECKS
            ========================================== */}
         <section className="space-y-4 pt-2">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-navy-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
             <h2 className="text-sm font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
               <ListChecks className="w-4 h-4" /> 7. Recommended Next Checks Prior to Departure
             </h2>
-            <span className="text-[11px] font-mono text-cyan-300">
+            <span className="text-[11px] font-mono text-cyan-800">
               Personalized for {activeReport.travellerType}
             </span>
           </div>
@@ -820,9 +820,9 @@ export const ReportPage = () => {
             {sections.recommendedNextChecks?.map((item) => (
               <div
                 key={item.id}
-                className="p-3.5 rounded-xl bg-navy-900/60 border border-navy-800 flex items-start gap-3 text-xs"
+                className="p-3.5 rounded-xl bg-white/70 border border-slate-200 flex items-start gap-3 text-xs"
               >
-                <div className="p-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex-shrink-0 mt-0.5">
+                <div className="p-1 rounded-md bg-cyan-500/10 border border-cyan-200 text-cyan-400 flex-shrink-0 mt-0.5">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex-1 space-y-1">
@@ -835,7 +835,7 @@ export const ReportPage = () => {
                       {item.priority}
                     </Badge>
                   </div>
-                  <p className="text-slate-300 leading-relaxed">{item.action}</p>
+                  <p className="text-slate-600 leading-relaxed">{item.action}</p>
                 </div>
               </div>
             ))}
@@ -843,30 +843,30 @@ export const ReportPage = () => {
         </section>
 
         {/* Tactical Emergency Phrasebook (Retained from Phase 2) */}
-        <section className="space-y-3 pt-4 border-t border-navy-800 print-break-inside-avoid">
+        <section className="space-y-3 pt-4 border-t border-slate-200 print-break-inside-avoid">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
               <Languages className="w-4 h-4" /> Localized Emergency Phrasebook
             </h3>
-            <span className="text-[11px] text-slate-400 font-mono">Quick Reference</span>
+            <span className="text-[11px] text-slate-500 font-mono">Quick Reference</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-            <div className="p-2.5 rounded-lg bg-navy-900/60 border border-navy-800">
+            <div className="p-2.5 rounded-lg bg-white/70 border border-slate-200">
               <span className="text-white font-medium block">Help me, it is an emergency!</span>
-              <span className="text-cyan-300 font-semibold">¡Ayúdeme, es una emergencia!</span>
-              <span className="text-[10px] text-slate-400 block italic">[eye-YOO-deh-meh, ess OO-nah eh-mehr-HEN-see-ah]</span>
+              <span className="text-cyan-800 font-semibold">¡Ayúdeme, es una emergencia!</span>
+              <span className="text-[10px] text-slate-500 block italic">[eye-YOO-deh-meh, ess OO-nah eh-mehr-HEN-see-ah]</span>
             </div>
-            <div className="p-2.5 rounded-lg bg-navy-900/60 border border-navy-800">
+            <div className="p-2.5 rounded-lg bg-white/70 border border-slate-200">
               <span className="text-white font-medium block">Where is the nearest hospital?</span>
-              <span className="text-cyan-300 font-semibold">¿Dónde está el hospital más cercano?</span>
-              <span className="text-[10px] text-slate-400 block italic">[DOHN-deh ess-TAH el ohs-pee-TAHL mahs sehr-KAH-noh]</span>
+              <span className="text-cyan-800 font-semibold">¿Dónde está el hospital más cercano?</span>
+              <span className="text-[10px] text-slate-500 block italic">[DOHN-deh ess-TAH el ohs-pee-TAHL mahs sehr-KAH-noh]</span>
             </div>
           </div>
         </section>
 
         {/* Verification Sign-Off Footer */}
-        <div className="pt-6 border-t border-navy-800 flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] text-slate-500 gap-2 font-mono">
+        <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] text-slate-500 gap-2 font-mono">
           <span>BLINDSPOT RISK & INTELLIGENCE REPORT // RECORD REF: {currentInvestigation?.id || 'BLINDSPOT-2026'}</span>
           <span>REPORT INTEGRITY: ZERO-HALLUCINATION ENFORCED</span>
         </div>

@@ -86,12 +86,12 @@ export const DashboardPage = () => {
   if (!currentInvestigation) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mx-auto flex items-center justify-center">
+        <div className="w-16 h-16 rounded-2xl bg-cyan-50 border border-cyan-200 text-cyan-700 mx-auto flex items-center justify-center shadow-xs">
           <FolderOpen className="w-8 h-8" />
         </div>
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-white">No Active Investigation Loaded</h2>
-          <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto">
+          <h2 className="text-2xl font-bold text-slate-900">No Active Investigation Loaded</h2>
+          <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
             Select a verified sample destination from the intelligence catalog or initiate a customized investigation.
           </p>
         </div>
@@ -135,29 +135,29 @@ export const DashboardPage = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-cyan-950 border border-cyan-400 text-cyan-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold animate-in fade-in slide-in-from-bottom-2">
+        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 border border-cyan-400 text-cyan-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold animate-in fade-in slide-in-from-bottom-2">
           <Check className="w-4 h-4 text-cyan-400" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Prominent Sample / Live Content Disclaimer Banner */}
-      <div className="p-3 rounded-xl bg-navy-900/90 border border-cyan-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-        <div className="flex items-center gap-2 text-cyan-300">
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="font-semibold uppercase tracking-wider font-mono text-[11px]">
+      <div className="p-3.5 rounded-xl bg-white/80 border border-cyan-200/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs shadow-xs backdrop-blur-md">
+        <div className="flex items-center gap-2 text-cyan-800">
+          <span className="w-2 h-2 rounded-full bg-cyan-600 animate-pulse" />
+          <span className="font-bold uppercase tracking-wider font-mono text-[11px]">
             {report.isCustomDestination || !currentInvestigation.isSample
               ? 'Live Grounded Intelligence Dossier'
               : 'Demonstration Intelligence Dossier'}
           </span>
-          <span className="text-slate-400 hidden md:inline">
+          <span className="text-slate-600 hidden md:inline">
             {report.isCustomDestination || !currentInvestigation.isSample
               ? '— Real-time intelligence synthesized from live search, SerpApi Google Maps, and AI verification.'
               : '— All data below is clearly labeled sample telemetry for Phase 2 frontend verification.'}
           </span>
         </div>
         <div className="flex items-center gap-2 self-end sm:self-center">
-          <span className="text-slate-400 text-[11px]">Active Investigation:</span>
+          <span className="text-slate-500 text-[11px] font-medium">Active Destination:</span>
           <select
             value={currentInvestigation.destinationId}
             onChange={(e) => {
@@ -175,7 +175,7 @@ export const DashboardPage = () => {
                 setCurrentInvestigation(switchInv);
               }
             }}
-            className="bg-navy-800 border border-navy-700 text-xs text-white rounded-lg px-2.5 py-1 focus:outline-none focus:border-cyan-500"
+            className="bg-white border border-slate-200 text-xs text-slate-800 rounded-xl px-2.5 py-1 focus:outline-none focus:border-cyan-500 shadow-xs font-medium"
           >
             {report.isCustomDestination && (
               <option value={currentInvestigation.destinationId}>
@@ -192,34 +192,34 @@ export const DashboardPage = () => {
       </div>
 
       {/* Dashboard Top Header Bar */}
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-2 border-b border-navy-800">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-2 border-b border-slate-200/80">
         <div>
           <div className="flex items-center gap-3">
             <span className="text-4xl">{report.flag}</span>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                   {currentInvestigation.destinationName}
                 </h1>
                 <Badge variant={currentInvestigation.isSample ? "info" : "success"}>
                   {currentInvestigation.isSample ? "Phase 2 Tactical Grid" : "Live Grounded Intelligence"}
                 </Badge>
               </div>
-              <p className="text-xs text-slate-400 mt-1">
-                Investigation Record: <span className="font-mono text-slate-300">{currentInvestigation.id}</span>
+              <p className="text-xs text-slate-500 mt-1">
+                Investigation Record: <span className="font-mono text-slate-700 font-semibold">{currentInvestigation.id}</span>
               </p>
             </div>
           </div>
 
           {/* Metadata Badges */}
           <div className="mt-3 flex items-center gap-3 flex-wrap text-xs">
-            <span className="flex items-center gap-1.5 text-slate-300 bg-navy-900/80 px-2.5 py-1 rounded-lg border border-navy-800">
-              <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="flex items-center gap-1.5 text-slate-700 bg-white/80 px-2.5 py-1 rounded-xl border border-slate-200 shadow-xs font-medium">
+              <Calendar className="w-3.5 h-3.5 text-cyan-600" />
               <span>{currentInvestigation.dates.start} to {currentInvestigation.dates.end} ({currentInvestigation.dates.days} Days)</span>
             </span>
 
-            <span className="flex items-center gap-1.5 text-slate-300 bg-navy-900/80 px-2.5 py-1 rounded-lg border border-navy-800">
-              <Users className="w-3.5 h-3.5 text-indigo-400" />
+            <span className="flex items-center gap-1.5 text-slate-700 bg-white/80 px-2.5 py-1 rounded-xl border border-slate-200 shadow-xs font-medium">
+              <Users className="w-3.5 h-3.5 text-indigo-600" />
               <span>{currentInvestigation.travellerType}</span>
             </span>
           </div>
@@ -309,10 +309,10 @@ export const DashboardPage = () => {
       <SourceExplorerCard sources={report.sources} />
 
       {/* Bottom CTA to Full Dossier */}
-      <div className="p-6 rounded-2xl glass-card border border-navy-700/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="p-6 rounded-2xl glass-card border border-slate-200/90 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-glass-light">
         <div>
-          <h3 className="text-base font-bold text-white">Need Offline Emergency Protocols & Threat Matrices?</h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <h3 className="text-base font-bold text-slate-900">Need Offline Emergency Protocols & Threat Matrices?</h3>
+          <p className="text-xs text-slate-600 mt-0.5">
             View the printable comprehensive briefing including phonetic phrasebooks and neighborhood risk corridors.
           </p>
         </div>
